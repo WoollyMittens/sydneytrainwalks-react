@@ -1,0 +1,10 @@
+{
+	"guidesURL": "./guides.json",
+	"routesURL": "./routes.json",
+	"photosURL": "./photos.json",
+	"remoteAssetsURL": "http://sydneytrainwalks.com/inc/",
+	"localAssetsURL": "./",
+	"remoteMapURL": "http://4umaps.eu/{z}/{x}/{y}.png",
+	"localMapURL": "./tiles/{z}/{x}/{y}.jpg",
+	"mapAttribution": "Maps &copy; <a href=&quot;http://www.4umaps.eu/mountain-bike-hiking-bicycle-outdoor-topographic-map.htm&quot; target=&quot;_blank&quot;>4UMaps</a>, Data &copy; <a href=&quot;http://www.openstreetmap.org/copyright&quot; target=&quot;_blank&quot;>OpenStreetMap</a> and contributors, CC BY-SA"
+}
