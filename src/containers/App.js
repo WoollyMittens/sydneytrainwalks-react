@@ -9,9 +9,10 @@ import GuideDetails from "../components/GuideDetails";
 import GuideZoom from "../components/GuideZoom";
 import GuideGallery from "../components/GuideGallery";
 import GuideFilters from "../components/GuideFilters";
-import GuidesList from "../components/GuidesList";
-import GuideTitle from "../components/GuidesTitle";
-import GuideMenu from "../components/GuidesMenu";
+import GuideList from "../components/GuideList";
+import GuideTitle from "../components/GuideTitle";
+import GuideMenu from "../components/GuideMenu";
+import '../styles/app.css';
 
 class App extends Component {
 
@@ -92,22 +93,22 @@ class App extends Component {
 			: null;
 
 		var components = [];
-		components.push(<GuideTitle/>);
+		components.push(<GuideTitle key="app-title"/>);
 		if (active) {
-			components.push(<GuideMap route={route} markers={markers} photo={photo}/>);
-			components.push(<GuideZoom photo={photo} resetPhoto={actions.resetPhoto}/>);
-			components.push(<GuideDetails guide={guide} active={active} pickPhoto={actions.pickPhoto}/>);
-			components.push(<GuideGallery gallery={gallery} pickPhoto={actions.pickPhoto}/>);
+			components.push(<GuideMap key="app-map" route={route} markers={markers} photo={photo}/>);
+			components.push(<GuideZoom key="app-zoom" photo={photo} resetPhoto={actions.resetPhoto}/>);
+			components.push(<GuideDetails key="app-details" guide={guide} active={active} pickPhoto={actions.pickPhoto}/>);
+			components.push(<GuideGallery key="app-gallery" gallery={gallery} pickPhoto={actions.pickPhoto}/>);
 		} else {
-			components.push(<GuideFilters filtered={filtered} sorted={sorted} sortGuides={actions.sortGuides} filterGuides={actions.filterGuides}/>);
-			components.push(<GuidesList filtered={filtered} sorted={sorted} guides={guides} pickGuide={actions.pickGuide}/>);
+			components.push(<GuideFilters key="app-filters" filtered={filtered} sorted={sorted} sortGuides={actions.sortGuides} filterGuides={actions.filterGuides}/>);
+			components.push(<GuideList key="app-list" filtered={filtered} sorted={sorted} guides={guides} pickGuide={actions.pickGuide}/>);
 		}
-		components.push(<GuideMenu active={active} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
+		components.push(<GuideMenu key="app-menu" active={active} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
 		return (components);
 	}
 	render() {
 		const {active} = this.props;
-		return (<section>
+		return (<section className="guide-app">
 			{this.addComponents(active)}
 		</section>);
 	}

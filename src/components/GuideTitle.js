@@ -1,8 +1,9 @@
 import React from "react";
 import {Component} from "react";
 import Config from '../config.json';
+import '../styles/guides-title.css';
 
-class GuidesTitle extends Component {
+class GuideTitle extends Component {
 
 	render() {
 		return (<header className="guides-title">
@@ -12,4 +13,4 @@ class GuidesTitle extends Component {
 
 }
 
-export default GuidesTitle;
+export default GuideTitle;

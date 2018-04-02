@@ -1,12 +1,13 @@
 .guide-zoom {
 	position: fixed;
 	left: 0;
-	top: 0;
+	top: 4rem;
 	right: 0;
-	bottom: 0;
+	bottom: 4rem;
 	background-color: rgba(0, 0, 0, 0.7);
 	margin: 0;
 	z-index: 9999;
+	overflow: hidden;
 }
 
 .guide-zoom a {
@@ -14,7 +15,7 @@
 	right: 2rem;
 	top: 2rem;
 	color: white;
-	text-shadow: 1px 1px 1px Black;
+	z-index: 2;
 }
 
 .guide-zoom img {
@@ -24,4 +25,5 @@
 	max-width: 100%;
 	max-height: 100%;
 	transform: translate(-50%, -50%);
+	z-index: 1;
 }

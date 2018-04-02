@@ -1,7 +1,7 @@
 import React from "react";
 import {Component} from "react";
 
-class GuidesList extends Component {
+class GuideList extends Component {
 
 	onGuidePicked(key, evt) {
 		evt.preventDefault();
@@ -69,4 +69,4 @@ class GuidesList extends Component {
 
 }
 
-export default GuidesList;
+export default GuideList;
