@@ -14,6 +14,7 @@ import GuideTitle from "../components/GuideTitle";
 import GuideMenu from "../components/GuideMenu";
 import GuideOverview from "../components/GuideOverview";
 import GuideAbout from "../components/GuideAbout";
+import GuideHeader from "../components/GuideHeader";
 import '../styles/app.css';
 
 class App extends Component {
@@ -96,6 +97,7 @@ class App extends Component {
 		var components = [];
 		components.push(<GuideTitle key="app-title"/>);
 		if (active) {
+			components.push(<GuideHeader key="app-header" guide={guide}/>);
 			components.push(<GuideMap key="app-map" route={route} markers={markers} photo={photo}/>);
 			components.push(<GuideZoom key="app-zoom" photo={photo} resetPhoto={actions.resetPhoto} switchView={actions.switchView}/>);
 			components.push(<GuideDetails key="app-details" guide={guide} active={active} pickPhoto={actions.pickPhoto}/>);

@@ -1,0 +1,17 @@
+.guide-header {
+	position: absolute;
+  top: 4rem;
+  right: 0;
+  height: 4rem;
+  left: 0;
+  background-color: #fff;
+	border-bottom: solid 1px #ccc;
+	margin: 0;
+	padding: 1rem;
+	z-index: 10;
+}
+
+.guide-header h2 {
+	margin: 0;
+	text-align: center;
+}

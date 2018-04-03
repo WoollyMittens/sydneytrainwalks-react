@@ -30,9 +30,6 @@ class GuideDetails extends Component {
 
 	addDetails(guide) {
 		return (<article className="guide-details">
-			<h1>From {guide.markers.start.location}{" "}
-				to {guide.markers.end.location}{" "}
-				via {guide.location}</h1>
 			<div dangerouslySetInnerHTML={this.getDescription(guide.description)}></div>
 			{this.getLandmarks(guide.landmarks, guide.assets)}
 		</article>);
