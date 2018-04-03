@@ -75,6 +75,7 @@ class App extends Component {
 			photos,
 			filtered,
 			sorted,
+			view,
 			actions
 		} = this.props;
 
@@ -108,9 +109,10 @@ class App extends Component {
 			components.push(<GuideOverview key="app-overview"/>);
 			components.push(<GuideAbout key="app-about"/>);
 		}
-		components.push(<GuideMenu key="app-menu" active={active} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
+		components.push(<GuideMenu key="app-menu" active={active} view={view} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
 		return (components);
 	}
+
 	render() {
 		const {active, view} = this.props;
 		return (<section className={"guide-app guide-view-" + view}>

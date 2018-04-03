@@ -1,8 +1,8 @@
 .guide-list {
 	position: absolute;
-	top: 8rem;
+	top: 10rem;
 	right: 0;
-	bottom: 4rem;
+	bottom: 5rem;
 	left: 0;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;

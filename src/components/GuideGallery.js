@@ -14,9 +14,14 @@ class GuideGallery extends Component {
 	getThumbnails(gallery) {
 		const smallImagePath = Config.localAssetsURL + "small/" + gallery.key + "/";
 		const mediumImagePath = Config.remoteAssetsURL + "medium/" + gallery.key + "/";
-		return gallery.photos.map(key => (<li key={key}>
-			<a href={mediumImagePath + key} onClick={this.onPhotoPicked.bind(this, key)}><img alt="" src={smallImagePath + key}/></a>
-		</li>));
+		return gallery.photos.map(key => {
+			var imgStyle = {
+				"backgroundImage": "url(" + smallImagePath + key + ")"
+			};
+			return (<li key={key} style={imgStyle}>
+				<a href={mediumImagePath + key} onClick={this.onPhotoPicked.bind(this, key)}><img alt="" src={smallImagePath + key}/></a>
+			</li>)
+		});
 	}
 
 	addGallery(gallery) {

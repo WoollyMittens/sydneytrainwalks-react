@@ -1,19 +1,80 @@
 .guide-details {
 	position: absolute;
-  top: 8rem;
-  right: 0;
-  bottom: 4rem;
-  left: 0;
-  background-color: #fff;
+	top: 10rem;
+	right: 0;
+	bottom: 5rem;
+	left: 0;
+	background-color: #fff;
 	transform: translate(100%, 0%);
 	transition: transform ease 300ms;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 	margin: 0;
-	padding: 2rem;
+	padding: 1rem 2rem;
 	z-index: 2;
 }
 
 .guide-view-details .guide-details {
 	transform: translate(0%, 0%);
+}
+
+.guide-details p {}
+
+.guide-details p a {}
+
+.guide-details p a img {}
+
+.guide-details .guide-landmark,
+.guide-details .guide-optional {
+	display: flex;
+}
+
+.guide-details .guide-optional {
+	background-color: #dec;
+	padding: 1em;
+	margin: 0;
+}
+
+.guide-details .guide-landmark:after,
+.guide-details .guide-optional:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.guide-details .guide-text {
+	flex: 0 1 auto;
+	padding: 0 0 0 1em;
+}
+
+.guide-details .guide-thumbnail {
+	flex: 0 1 auto;
+	display: inline-block;
+	width: 12rem;
+	min-width: 12rem;
+	height: 8rem;
+	position: relative;
+	background-size: cover;
+	background-position: center;
+}
+
+.guide-details .guide-thumbnail:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.guide-details .guide-thumbnail img {
+	vertical-align: top;
+	max-width: 100%;
+	max-height: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }

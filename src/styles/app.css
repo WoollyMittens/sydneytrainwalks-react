@@ -2,11 +2,14 @@
 	box-sizing: border-box;
 }
 
-html {}
+html {
+	font-size: 10px;
+}
 
 body {
 	font-family: sans-serif;
 	overflow: hidden;
+	font-size: 1.6rem;
 }
 
 h1 {}

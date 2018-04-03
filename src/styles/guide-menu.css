@@ -3,7 +3,7 @@
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	height: 4rem;
+	height: 5rem;
 	background-color: #fff;
 	border-top: solid 1px #ccc;
 	z-index: 9999;
@@ -13,4 +13,8 @@
 
 .guide-menu button {
 	margin : 0 0.5rem;
+}
+
+.guide-menu button.active {
+	background-color: #ccc;
 }
