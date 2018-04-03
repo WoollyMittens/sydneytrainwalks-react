@@ -6,7 +6,8 @@ class GuideMenu extends Component {
 
 	onResetGuide(evt) {
 		evt.preventDefault();
-		const {resetGuide} = this.props;
+		const {resetPhoto, resetGuide} = this.props;
+		resetPhoto();
 		resetGuide();
 	}
 
