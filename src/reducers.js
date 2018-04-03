@@ -1,4 +1,13 @@
-import {IMPORT_DATA, PICK_GUIDE, RESET_GUIDE, PICK_PHOTO, RESET_PHOTO, SORT_GUIDES, FILTER_GUIDES, SWITCH_VIEW} from "./actions";
+import {
+	IMPORT_DATA,
+	PICK_GUIDE,
+	RESET_GUIDE,
+	PICK_PHOTO,
+	RESET_PHOTO,
+	SORT_GUIDES,
+	FILTER_GUIDES,
+	SWITCH_VIEW
+} from "./actions";
 
 var defaultState = {
 	active: null,
@@ -6,9 +15,9 @@ var defaultState = {
 	guides: null,
 	exif: null,
 	gpx: null,
-	sorted: '',
-	filtered: '',
-	view: ''
+	sorted: "",
+	filtered: "",
+	view: "home"
 };
 
 function appReducer(state = defaultState, action) {
@@ -20,9 +29,15 @@ function appReducer(state = defaultState, action) {
 				photos: action.data.photos
 			});
 		case PICK_GUIDE:
-			return Object.assign({}, state, {active: action.key});
+			return Object.assign({}, state, {
+				active: action.key,
+				view: "map"
+			});
 		case RESET_GUIDE:
-			return Object.assign({}, state, {active: null});
+			return Object.assign({}, state, {
+				active: null,
+				view: "home"
+			});
 		case PICK_PHOTO:
 			return Object.assign({}, state, {highlight: action.key});
 		case RESET_PHOTO:

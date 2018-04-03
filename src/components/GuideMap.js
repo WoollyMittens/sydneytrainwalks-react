@@ -5,6 +5,7 @@ import Config from "../config.json";
 import Leaflet from "leaflet";
 import LocationMarker from "../markers/marker-location.png";
 import PhotoMarker from "../markers/marker-photo.png";
+import '../styles/guide-map.css';
 
 class GuideMap extends Component {
 
@@ -24,6 +25,10 @@ class GuideMap extends Component {
 				timeout: 27000
 			})
 			: null;
+	}
+
+	componentWillUnmount() {
+		navigator.geolocation.clearWatch(this.watcher);
 	}
 
 	onFailedLocation(e) {

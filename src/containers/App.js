@@ -12,6 +12,8 @@ import GuideFilters from "../components/GuideFilters";
 import GuideList from "../components/GuideList";
 import GuideTitle from "../components/GuideTitle";
 import GuideMenu from "../components/GuideMenu";
+import GuideOverview from "../components/GuideOverview";
+import GuideAbout from "../components/GuideAbout";
 import '../styles/app.css';
 
 class App extends Component {
@@ -72,7 +74,6 @@ class App extends Component {
 			photos,
 			filtered,
 			sorted,
-			view,
 			actions
 		} = this.props;
 
@@ -102,13 +103,15 @@ class App extends Component {
 		} else {
 			components.push(<GuideFilters key="app-filters" filtered={filtered} sorted={sorted} sortGuides={actions.sortGuides} filterGuides={actions.filterGuides}/>);
 			components.push(<GuideList key="app-list" filtered={filtered} sorted={sorted} guides={guides} pickGuide={actions.pickGuide}/>);
+			components.push(<GuideOverview key="app-overview"/>);
+			components.push(<GuideAbout key="app-about"/>);
 		}
 		components.push(<GuideMenu key="app-menu" active={active} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
 		return (components);
 	}
 	render() {
-		const {active} = this.props;
-		return (<section className="guide-app">
+		const {active, view} = this.props;
+		return (<section className={"guide-app guide-view-" + view}>
 			{this.addComponents(active)}
 		</section>);
 	}

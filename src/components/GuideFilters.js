@@ -1,5 +1,6 @@
 import React from "react";
 import {Component} from "react";
+import '../styles/guide-filters.css';
 
 class GuideFilters extends Component {
 
@@ -16,7 +17,7 @@ class GuideFilters extends Component {
 	addFilter() {
 		const {filtered} = this.props;
 		return (<label>
-			<span>Filter</span><input onKeyPress={this.onFilter.bind(this)} onChange={this.onFilter.bind(this)} type="text" value={filtered}/></label>);
+			<span>Filter</span><input onKeyPress={this.onFilter.bind(this)} onChange={this.onFilter.bind(this)} placeholder="Search" type="text" value={filtered}/></label>);
 	}
 
 	addSorter() {

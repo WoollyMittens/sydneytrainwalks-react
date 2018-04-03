@@ -1,6 +1,5 @@
 import React from "react";
 import {Component} from "react";
-import Config from '../config.json';
 import '../styles/guide-menu.css';
 
 class GuideMenu extends Component {
@@ -11,16 +10,22 @@ class GuideMenu extends Component {
 		resetGuide();
 	}
 
+	onSwitchView(name, evt) {
+		evt.preventDefault();
+		const {switchView} = this.props;
+		switchView(name);
+	}
+
 	getItems(active) {
 		var items = [];
-		items.push(<button key="guide-menu-reset" onClick={this.onResetGuide.bind(this)}>Menu</button>);
+		items.push(<button key="guide-menu-home" onClick={this.onResetGuide.bind(this)}>Home</button>);
 		if (active) {
-			items.push(<button key="guide-menu-map">Map</button>);
-			items.push(<button key="guide-menu-guide">Guide</button>);
-			items.push(<button key="guide-menu-photos">Photos</button>);
+			items.push(<button key="guide-menu-map" onClick={this.onSwitchView.bind(this, "map")}>Map</button>);
+			items.push(<button key="guide-menu-details" onClick={this.onSwitchView.bind(this, "details")}>Guide</button>);
+			items.push(<button key="guide-menu-gallery" onClick={this.onSwitchView.bind(this, "gallery")}>Photos</button>);
 		} else {
-			items.push(<button key="guide-menu-overview">Overview</button>);
-			items.push(<button key="guide-menu-about">About</button>);
+			items.push(<button key="guide-menu-overview" onClick={this.onSwitchView.bind(this, "overview")}>Overview</button>);
+			items.push(<button key="guide-menu-about" onClick={this.onSwitchView.bind(this, "about")}>About</button>);
 		}
 		return items;
 	}

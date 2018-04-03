@@ -1,6 +1,7 @@
 import React from "react";
 import {Component} from "react";
 import Config from '../config.json';
+import '../styles/guide-details.css';
 
 class GuideDetails extends Component {
 

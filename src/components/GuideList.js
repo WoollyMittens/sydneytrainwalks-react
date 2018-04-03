@@ -1,5 +1,6 @@
 import React from "react";
 import {Component} from "react";
+import '../styles/guide-list.css';
 
 class GuideList extends Component {
 
@@ -58,7 +59,7 @@ class GuideList extends Component {
 
 	render() {
 		const {guides} = this.props;
-		return (<nav>
+		return (<nav className="guide-list">
 			<ul>{
 					guides
 						? this.getLinks(guides)

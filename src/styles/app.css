@@ -1,3 +1,32 @@
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+html {}
+
+body {
+	font-family: sans-serif;
+	overflow: hidden;
+}
+
+h1 {}
+
+h2 {}
+
+h3 {}
+
+p {}
+
+a {}
+
+figure {
+	margin: 0;
+}
+
+ul {}
+
+ul li {}
+
 .guide-app {
 	padding: 4rem 0 4rem;
 }

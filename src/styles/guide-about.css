@@ -1,0 +1,18 @@
+.guide-about {
+	position: absolute;
+	top: 4rem;
+	right: 0;
+	bottom: 4rem;
+	left: 0;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	background-color: #fff;
+	transform: translate(100%, 0%);
+	transition: transform ease 300ms;
+	margin: 0;
+	padding: 2rem;
+}
+
+.guide-view-about .guide-about {
+	transform: translate(0%, 0%);
+}
