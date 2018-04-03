@@ -11,9 +11,21 @@ class GuideZoom extends Component {
 		resetPhoto();
 	}
 
+	onLocate(evt) {
+		evt.preventDefault();
+		const {switchView} = this.props;
+		switchView("map");
+	}
+
 	addZoom(photo) {
 		const mediumImagePath = Config.remoteAssetsURL + "medium/" + photo.key + "/";
-		return (<figure className="guide-zoom"><a onClick={this.onClosed.bind(this)} href="">Close</a><img alt="" src={mediumImagePath + photo.name}/></figure>);
+		return (<figure className="guide-zoom">
+			<figcaption className="guide-zoom-controls">
+				<button className="guide-zoom-locate" onClick={this.onLocate.bind(this)}>Locate on map</button>
+				<button className="guide-zoom-close" onClick={this.onClosed.bind(this)}>Close</button>
+			</figcaption>
+			<img alt="" src={mediumImagePath + photo.name}/>
+		</figure>);
 	}
 
 	render() {

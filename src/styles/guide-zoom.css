@@ -6,17 +6,25 @@
 	bottom: 4rem;
 	background-color: rgba(0, 0, 0, 0.7);
 	margin: 0;
-	z-index: 9999;
+	z-index: 3;
 	overflow: hidden;
 }
 
-.guide-zoom a {
+.guide-zoom .guide-zoom-controls {
 	position: absolute;
 	right: 2rem;
 	top: 2rem;
-	color: white;
 	z-index: 2;
 }
+
+.guide-zoom .guide-zoom-controls button {
+	color: white;
+	margin: 0 0 0 1rem;
+}
+
+.guide-zoom .guide-zoom-close {}
+
+.guide-zoom .guide-zoom-locate {}
 
 .guide-zoom img {
 	position: absolute;

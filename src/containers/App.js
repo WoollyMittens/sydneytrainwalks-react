@@ -97,7 +97,7 @@ class App extends Component {
 		components.push(<GuideTitle key="app-title"/>);
 		if (active) {
 			components.push(<GuideMap key="app-map" route={route} markers={markers} photo={photo}/>);
-			components.push(<GuideZoom key="app-zoom" photo={photo} resetPhoto={actions.resetPhoto}/>);
+			components.push(<GuideZoom key="app-zoom" photo={photo} resetPhoto={actions.resetPhoto} switchView={actions.switchView}/>);
 			components.push(<GuideDetails key="app-details" guide={guide} active={active} pickPhoto={actions.pickPhoto}/>);
 			components.push(<GuideGallery key="app-gallery" gallery={gallery} pickPhoto={actions.pickPhoto}/>);
 		} else {
@@ -106,7 +106,7 @@ class App extends Component {
 			components.push(<GuideOverview key="app-overview"/>);
 			components.push(<GuideAbout key="app-about"/>);
 		}
-		components.push(<GuideMenu key="app-menu" active={active} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
+		components.push(<GuideMenu key="app-menu" active={active} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
 		return (components);
 	}
 	render() {

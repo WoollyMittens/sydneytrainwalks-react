@@ -12,7 +12,8 @@ class GuideMenu extends Component {
 
 	onSwitchView(name, evt) {
 		evt.preventDefault();
-		const {switchView} = this.props;
+		const {resetPhoto, switchView} = this.props;
+		resetPhoto();
 		switchView(name);
 	}
 

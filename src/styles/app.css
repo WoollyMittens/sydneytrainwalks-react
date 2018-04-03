@@ -19,6 +19,13 @@ p {}
 
 a {}
 
+button {
+	border: none;
+	background: Transparent;
+	padding: 0;
+	cursor: pointer;
+}
+
 figure {
 	margin: 0;
 }
