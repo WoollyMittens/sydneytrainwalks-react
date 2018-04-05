@@ -1,9 +1,9 @@
 .guide-zoom {
 	position: absolute;
 	left: 0;
-	top: 10rem;
+	top: 8.666666666666667rem;
 	right: 0;
-	bottom: 5rem;
+	bottom: 4.666666666666667rem;
 	background-color: rgba(0, 0, 0, 0.7);
 	margin: 0;
 	z-index: 6;

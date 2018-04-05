@@ -1,23 +1,25 @@
 import React from "react";
 import {Component} from "react";
+import GuideLabel from "../components/GuideLabel";
 import '../styles/guide-list.css';
 
 class GuideList extends Component {
 
-	onGuidePicked(key, evt) {
+	onPickGuide(key, evt) {
 		evt.preventDefault();
 		const {pickGuide} = this.props;
 		pickGuide(key);
 	}
 
 	getPlaceholder() {
-		return (<span className="busy">loading...</span>);
+		return (<span className="guide-busy">loading...</span>);
 	}
 
 	getLinks(guides) {
 		const {sorted, filtered} = this.props;
-		var sorter,
-			matcher = new RegExp(filtered, 'i');
+		const matcher = new RegExp(filtered, 'i');
+		var sorter;
+
 		switch (sorted) {
 			case 'longest':
 				sorter = (a, b) => guides[b].length - guides[a].length;
@@ -46,15 +48,8 @@ class GuideList extends Component {
 
 		return Object.keys(guides).sort(sorter).map(
 			(key) => matcher.test(guides[key].location + ' ' + guides[key].markers.start.location + ' ' + guides[key].markers.end.location)
-			? (<li key={key}>
-				<button onClick={this.onGuidePicked.bind(this, key)}>
-					From {guides[key].markers.start.location}{" "}
-					to {guides[key].markers.end.location}{" "}
-					via {guides[key].location}{" "}
-					({guides[key].length}km)
-				</button>
-			</li>)
-			: null)
+			? <li key={key}><button onClick={this.onPickGuide.bind(this, key)}><GuideLabel name={key} guide={guides[key]}/></button></li>
+			: null);
 	}
 
 	render() {

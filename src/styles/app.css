@@ -3,24 +3,45 @@
 }
 
 html {
-	font-size: 10px;
+	font-size: 12px;
 }
 
 body {
 	font-family: sans-serif;
 	overflow: hidden;
-	font-size: 1.6rem;
+	font-size: 1.166666666666667rem;
+	font-weight: 400;
 }
 
-h1 {}
+h1 {
+	font-size: 2rem;
+	margin: 0 0 2rem 0;
+	font-weight: 400;
+}
 
-h2 {}
+h2 {
+	font-size: 1.666666666666667rem;
+	margin: 0 0 2rem 0;
+	font-weight: 500;
+}
 
-h3 {}
+h3 {
+	font-size: 1.333333333333333rem;
+	margin: 0 0 2rem 0;
+	font-weight: 400;
+}
 
-p {}
+p {
+	margin: 0 0 2rem 0;
+}
 
-a {}
+strong {
+	font-weight: 500;
+}
+
+a {
+	color: #0D47A1;
+}
 
 button {
 	border: none;

@@ -1,8 +1,15 @@
+.guide-busy {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .guide-list {
 	position: absolute;
-	top: 10rem;
+	top: 8.666666666666667rem;
 	right: 0;
-	bottom: 5rem;
+	bottom: 4.666666666666667rem;
 	left: 0;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
@@ -26,11 +33,12 @@
 }
 
 .guide-list ul li button {
-	border-color: #ccc;
+	border-color: #eee;
 	border-style: solid;
 	border-width: 0 0 1px 0;
 	display: block;
 	width: 100%;
-	padding: 1rem;
+	padding: 0;
 	cursor: pointer;
+	min-height: 6rem;
 }

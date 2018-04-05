@@ -1,8 +1,8 @@
 .guide-details {
 	position: absolute;
-	top: 10rem;
+	top: 8.666666666666667rem;
 	right: 0;
-	bottom: 5rem;
+	bottom: 4.666666666666667rem;
 	left: 0;
 	background-color: #fff;
 	transform: translate(100%, 0%);
@@ -10,7 +10,7 @@
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 	margin: 0;
-	padding: 1rem 2rem;
+	padding: 2rem;
 	z-index: 2;
 }
 
@@ -31,8 +31,7 @@
 
 .guide-details .guide-optional {
 	background-color: #dec;
-	padding: 1em;
-	margin: 0;
+	padding: 2rem;
 }
 
 .guide-details .guide-landmark:after,
@@ -44,7 +43,7 @@
 
 .guide-details .guide-text {
 	flex: 0 1 auto;
-	padding: 0 0 0 1em;
+	padding: 0 0 0 2rem;
 }
 
 .guide-details .guide-thumbnail {
