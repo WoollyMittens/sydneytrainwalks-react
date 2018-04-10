@@ -99,7 +99,7 @@ class App extends Component {
 		components.push(<GuideTitle key="app-title"/>);
 		if (active) {
 			components.push(<GuideHeader key="app-header" active={active} guide={guide}/>);
-			components.push(<GuideMap key="app-map" route={route} markers={markers} photo={photo}/>);
+			components.push(<GuideMap key="app-map" route={route} markers={markers} photo={photo} previousView={actions.previousView}/>);
 			components.push(<GuideZoom key="app-zoom" photo={photo} resetPhoto={actions.resetPhoto} switchView={actions.switchView}/>);
 			components.push(<GuideDetails key="app-details" guide={guide} active={active} pickPhoto={actions.pickPhoto}/>);
 			components.push(<GuideGallery key="app-gallery" gallery={gallery} pickPhoto={actions.pickPhoto}/>);
@@ -130,7 +130,8 @@ function mapStateToProps(state, props) {
 		photos: state.photos,
 		filtered: state.filtered,
 		sorted: state.sorted,
-		view: state.view
+		view: state.view,
+		previous: state.previous
 	};
 }
 

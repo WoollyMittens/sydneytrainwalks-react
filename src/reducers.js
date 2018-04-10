@@ -6,7 +6,8 @@ import {
 	RESET_PHOTO,
 	SORT_GUIDES,
 	FILTER_GUIDES,
-	SWITCH_VIEW
+	SWITCH_VIEW,
+	PREVIOUS_VIEW
 } from "./actions";
 
 var defaultState = {
@@ -17,7 +18,8 @@ var defaultState = {
 	gpx: null,
 	sorted: "",
 	filtered: "",
-	view: "home"
+	view: "home",
+	previous: "details"
 };
 
 function appReducer(state = defaultState, action) {
@@ -36,7 +38,8 @@ function appReducer(state = defaultState, action) {
 		case RESET_GUIDE:
 			return Object.assign({}, state, {
 				active: null,
-				view: "home"
+				view: "home",
+				previous: "details"
 			});
 		case PICK_PHOTO:
 			return Object.assign({}, state, {highlight: action.key});
@@ -47,7 +50,9 @@ function appReducer(state = defaultState, action) {
 		case FILTER_GUIDES:
 			return Object.assign({}, state, {filtered: action.keyword});
 		case SWITCH_VIEW:
-			return Object.assign({}, state, {view: action.name});
+			return Object.assign({}, state, {view: action.name, previous: state.view});
+		case PREVIOUS_VIEW:
+			return Object.assign({}, state, {view: state.previous, previous: state.view});
 		default:
 			return state;
 	}

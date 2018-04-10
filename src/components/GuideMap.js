@@ -31,6 +31,12 @@ class GuideMap extends Component {
 		navigator.geolocation.clearWatch(this.watcher);
 	}
 
+	onReturn(evt) {
+		evt.preventDefault();
+		const {previousView} = this.props;
+		previousView();
+	}
+
 	onFailedLocation(e) {
 		console.log(e);
 	}
@@ -196,7 +202,9 @@ class GuideMap extends Component {
 	render() {
 		const {route} = this.props;
 		return route
-			? (<figure className="guide-map">{this.addMap()}</figure>)
+			? (<figure className="guide-map">{this.addMap()}
+				<button className="guide-map-return" onClick={this.onReturn.bind(this)}>Return</button>
+			</figure>)
 			: null;
 	}
 

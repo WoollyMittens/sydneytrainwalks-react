@@ -19,4 +19,13 @@
 .guide-map .leaflet-container {
 	width: 100%;
 	height: 100%;
+	z-index: 1;
+}
+
+.guide-map-return {
+	position: absolute;
+	right: 2rem;
+	top: 2rem;
+	z-index: 2;
+	color: white;
 }
