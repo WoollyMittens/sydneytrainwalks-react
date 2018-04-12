@@ -14,20 +14,53 @@
 	transition: transform ease 300ms;
 	z-index: 1;
 	box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+	display: flex;
 }
 
 .guide-view-home .guide-filters {
 	transform: translate(0%, 0%);
 }
 
-.guide-filters label {}
+.guide-filters label {
+	flex: 1 1 auto;
+	padding: 0 0.5rem;
+	position: relative;
+}
 
 .guide-filters label span {
 	display: none;
 }
 
-.guide-filters label input[type=text] {}
+.guide-filters button {
+	border: none;
+	background-color: Transparent;
+	position: absolute;
+	right: 0.5rem;
+	top: 0;
+	height: 100%;
+	width: 2rem;
+	overflow: hidden;
+	text-indent: 3rem;
+}
 
-.guide-filters label select {}
+.guide-filters label input[type=text],
+.guide-filters label select {
+	border: solid 1px #333;
+	border-radius: 4px;
+	margin: 0;
+	width: 100%;
+	height: 2rem;
+	padding: 0 0.5rem;
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: contain;
+}
 
-.guide-filters label select option {}
+.guide-filters label input[type=text] {
+	background-image: url("../icons/button_delete_2.svg");
+}
+
+.guide-filters label select {
+	background-image: url("../icons/button_backward_2.svg");
+	appearance:none;
+}

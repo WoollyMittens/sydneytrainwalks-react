@@ -56,6 +56,7 @@
 .guide-label .guide-label-park img {
 	background-color: #00796B;
 	border: solid 1px #00796B;
+	border-radius: 0.2rem;
 }
 
 .guide-label .guide-label-park em {

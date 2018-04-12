@@ -9,6 +9,13 @@ class GuideFilters extends Component {
 		filterGuides(evt.target.value);
 	}
 
+	onClear(evt) {
+		const {filterGuides} = this.props;
+		evt.preventDefault();
+		evt.target.value = '';
+		filterGuides('');
+	}
+
 	onSort(evt) {
 		const {sortGuides} = this.props;
 		sortGuides(evt.target.value);
@@ -17,7 +24,9 @@ class GuideFilters extends Component {
 	addFilter() {
 		const {filtered} = this.props;
 		return (<label>
-			<span>Filter</span><input onKeyPress={this.onFilter.bind(this)} onChange={this.onFilter.bind(this)} placeholder="Search" type="text" value={filtered}/></label>);
+				<span>Filter</span><input onKeyPress={this.onFilter.bind(this)} onChange={this.onFilter.bind(this)} placeholder="Search" type="text" value={filtered}/>
+				<button onClick={this.onClear.bind(this)}>Clear</button>
+			</label>);
 	}
 
 	addSorter() {
@@ -36,10 +45,10 @@ class GuideFilters extends Component {
 	}
 
 	render() {
-		return (<fieldset className="guide-filters">
+		return (<form className="guide-filters">
 			{this.addFilter()}
 			{this.addSorter()}
-		</fieldset>);
+		</form>);
 	}
 
 }
