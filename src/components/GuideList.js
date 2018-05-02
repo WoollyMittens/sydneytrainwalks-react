@@ -48,7 +48,7 @@ class GuideList extends Component {
 
 		return Object.keys(guides).sort(sorter).map(
 			(key) => matcher.test(guides[key].location + ' ' + guides[key].markers.start.location + ' ' + guides[key].markers.end.location)
-			? <li key={key}><button onClick={this.onPickGuide.bind(this, key)}><GuideLabel name={key} guide={guides[key]}/></button></li>
+			? <li key={key}><button onClick={this.onPickGuide.bind(this, key)}><GuideLabel guide={guides[key]}/></button></li>
 			: null);
 	}
 
