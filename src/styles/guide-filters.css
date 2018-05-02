@@ -8,7 +8,7 @@
 	border-color: #eee;
 	border-style: solid;
 	border-width: 0 0 1px 0;
-	padding: 1rem;
+	padding: 0.5rem 1rem;
 	background-color: #fff;
 	transform: translate(100%, 0%);
 	transition: transform ease 300ms;
@@ -23,7 +23,8 @@
 
 .guide-filters label {
 	flex: 1 1 auto;
-	padding: 0 0.5rem;
+	width: 50%;
+	padding: 0 0.667rem;
 	position: relative;
 }
 
@@ -45,15 +46,25 @@
 
 .guide-filters label input[type=text],
 .guide-filters label select {
-	border: solid 1px #333;
-	border-radius: 4px;
+	border-radius: 0;
+	border: none;
+	border-bottom: solid 1px #CCCCCC;
+	padding: 0;
 	margin: 0;
-	width: 100%;
-	height: 2rem;
-	padding: 0 0.5rem;
+	background-color: #FFF;
 	background-repeat: no-repeat;
 	background-position: right center;
-	background-size: contain;
+	background-size: auto 65%;
+	width: 100%;
+	height: 3rem;
+}
+
+.guide-filters label input:focus,
+.guide-filters label select:focus {
+	border: none;
+	padding: 0.666666666666667rem 0;
+	border-bottom: solid 2px #1976D2;
+	transform: translateY(1px);
 }
 
 .guide-filters label input[type=text] {
