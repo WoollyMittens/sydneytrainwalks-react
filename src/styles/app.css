@@ -73,3 +73,7 @@ ul li {}
 	width: 100%;
 	height: 100%;
 }
+
+.guide-app *:focus {
+    outline: none;
+}
