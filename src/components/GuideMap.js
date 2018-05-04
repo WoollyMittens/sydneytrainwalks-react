@@ -115,12 +115,12 @@ class GuideMap extends Component {
 		const icon = new Leaflet.Icon({
 			iconUrl: LocationMarker,
 			iconSize: [
-				40, 40
+				32, 32
 			],
 			iconAnchor: [
-				20, 40
+				16, 32
 			],
-			popupAnchor: [20, 0]
+			popupAnchor: [16, 0]
 		});
 		return this.state.mapLocation
 			? <Marker position={this.state.mapLocation} icon={icon}></Marker>
@@ -131,12 +131,12 @@ class GuideMap extends Component {
 		const icon = new Leaflet.Icon({
 			iconUrl: PhotoMarker,
 			iconSize: [
-				40, 40
+				32, 32
 			],
 			iconAnchor: [
-				20, 40
+				16, 32
 			],
-			popupAnchor: [20, 0]
+			popupAnchor: [16, 0]
 		});
 		return photo
 			? <Marker position={photo.coords} icon={icon}></Marker>
@@ -163,12 +163,12 @@ class GuideMap extends Component {
 			icon = new Leaflet.Icon({
 				iconUrl: require('../markers/' + marker.icon),
 				iconSize: [
-					40, 40
+					32, 32
 				],
 				iconAnchor: [
-					20, 40
+					16, 32
 				],
-				popupAnchor: [0, -20]
+				popupAnchor: [0, -16]
 			});
 			return (<Marker onClick={this.onMarkerOpen.bind(this, [marker.lat, marker.lon])} key={key} position={[marker.lat, marker.lon]} icon={icon}>
 				<Popup position={this.state.popupLocation}>

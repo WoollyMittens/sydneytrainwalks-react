@@ -106,7 +106,7 @@ class App extends Component {
 		} else {
 			components.push(<GuideFilters key="app-filters" filtered={filtered} sorted={sorted} sortGuides={actions.sortGuides} filterGuides={actions.filterGuides}/>);
 			components.push(<GuideList key="app-list" filtered={filtered} sorted={sorted} guides={guides} pickGuide={actions.pickGuide}/>);
-			components.push(<GuideOverview key="app-overview"/>);
+			components.push(<GuideOverview key="app-overview" routes={routes} pickGuide={actions.pickGuide}/>);
 			components.push(<GuideAbout key="app-about"/>);
 		}
 		components.push(<GuideMenu key="app-menu" active={active} view={view} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
