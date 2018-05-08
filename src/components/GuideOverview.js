@@ -17,8 +17,9 @@ class GuideOverview extends Component {
 	}
 
 	onPickGuide(key) {
-		const {pickGuide} = this.props;
+		const {pickGuide, saveState} = this.props;
 		pickGuide(key);
+		saveState();
 	}
 
 	flattenCoordinates(route) {

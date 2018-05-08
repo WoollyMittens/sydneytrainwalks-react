@@ -70,16 +70,14 @@ function appReducer(state = defaultState, action) {
 				previous: state.view
 			});
 		case SAVE_STATE:
-			const saved = JSON.stringify({"active": state.active, "view": state.view});
-			console.log("SAVE_STATE", saved);
-			localStorage.setItem("saved", saved);
+			localStorage.setItem("saved", JSON.stringify({"active": state.active, "view": state.view}));
 			return state;
 		case LOAD_STATE:
 			const loaded = JSON.parse(localStorage.getItem("saved")) || state;
-			console.log("RESTORE_STATE", loaded);
+			if (!(loaded.active && state.guides[loaded.active])) return state;
 			return Object.assign({}, state, {
-				active: loaded.active || state.active,
-				view: loaded.view || state.active
+				active: loaded.active,
+				view: loaded.view
 			});
 		default:
 			return state;
