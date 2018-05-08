@@ -7,6 +7,8 @@ export const SORT_GUIDES = "SORT_GUIDES";
 export const FILTER_GUIDES = "FILTER_GUIDES";
 export const SWITCH_VIEW = "SWITCH_VIEW";
 export const PREVIOUS_VIEW = "PREVIOUS_VIEW";
+export const SAVE_STATE = "SAVE_STATE";
+export const LOAD_STATE = "LOAD_STATE";
 
 export function importData(data) {
 	return {type: IMPORT_DATA, data};
@@ -42,4 +44,12 @@ export function switchView(name) {
 
 export function previousView() {
 	return {type: PREVIOUS_VIEW};
+}
+
+export function saveState() {
+	return {type: SAVE_STATE};
+}
+
+export function loadState() {
+	return {type: LOAD_STATE};
 }

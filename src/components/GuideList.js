@@ -7,8 +7,9 @@ class GuideList extends Component {
 
 	onPickGuide(key, evt) {
 		evt.preventDefault();
-		const {pickGuide} = this.props;
+		const {pickGuide, saveState} = this.props;
 		pickGuide(key);
+		saveState();
 	}
 
 	getPlaceholder() {

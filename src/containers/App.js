@@ -39,6 +39,7 @@ class App extends Component {
 		const {actions} = this.props;
 		Promise.all([guidesResponse.json(), routesResponse.json(), photosResponse.json()]).then(([guidesJson, routesJson, photosJson]) => {
 			actions.importData({'guides': guidesJson, 'routes': routesJson, 'photos': photosJson});
+			actions.loadState();
 		}).catch((err) => {
 			console.log(err);
 		});
@@ -105,11 +106,11 @@ class App extends Component {
 			components.push(<GuideGallery key="app-gallery" gallery={gallery} pickPhoto={actions.pickPhoto}/>);
 		} else {
 			components.push(<GuideFilters key="app-filters" filtered={filtered} sorted={sorted} sortGuides={actions.sortGuides} filterGuides={actions.filterGuides}/>);
-			components.push(<GuideList key="app-list" filtered={filtered} sorted={sorted} guides={guides} pickGuide={actions.pickGuide}/>);
+			components.push(<GuideList key="app-list" filtered={filtered} sorted={sorted} guides={guides} pickGuide={actions.pickGuide} saveState={actions.saveState}/>);
 			components.push(<GuideOverview key="app-overview" routes={routes} pickGuide={actions.pickGuide}/>);
 			components.push(<GuideAbout key="app-about"/>);
 		}
-		components.push(<GuideMenu key="app-menu" active={active} view={view} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView}/>);
+		components.push(<GuideMenu key="app-menu" active={active} view={view} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView} saveState={actions.saveState}/>);
 		return (components);
 	}
 

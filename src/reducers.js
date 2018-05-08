@@ -7,7 +7,9 @@ import {
 	SORT_GUIDES,
 	FILTER_GUIDES,
 	SWITCH_VIEW,
-	PREVIOUS_VIEW
+	PREVIOUS_VIEW,
+	SAVE_STATE,
+	LOAD_STATE
 } from "./actions";
 
 var defaultState = {
@@ -42,17 +44,43 @@ function appReducer(state = defaultState, action) {
 				previous: "details"
 			});
 		case PICK_PHOTO:
-			return Object.assign({}, state, {highlight: action.key});
+			return Object.assign({}, state, {
+				highlight: action.key
+			});
 		case RESET_PHOTO:
-			return Object.assign({}, state, {highlight: null});
+			return Object.assign({}, state, {
+				highlight: null
+			});
 		case SORT_GUIDES:
-			return Object.assign({}, state, {sorted: action.property});
+			return Object.assign({}, state, {
+				sorted: action.property
+			});
 		case FILTER_GUIDES:
-			return Object.assign({}, state, {filtered: action.keyword});
+			return Object.assign({}, state, {
+				filtered: action.keyword
+			});
 		case SWITCH_VIEW:
-			return Object.assign({}, state, {view: action.name, previous: state.view});
+			return Object.assign({}, state, {
+				view: action.name,
+				previous: state.view
+			});
 		case PREVIOUS_VIEW:
-			return Object.assign({}, state, {view: state.previous, previous: state.view});
+			return Object.assign({}, state, {
+				view: state.previous,
+				previous: state.view
+			});
+		case SAVE_STATE:
+			const saved = JSON.stringify({"active": state.active, "view": state.view});
+			console.log("SAVE_STATE", saved);
+			localStorage.setItem("saved", saved);
+			return state;
+		case LOAD_STATE:
+			const loaded = JSON.parse(localStorage.getItem("saved")) || state;
+			console.log("RESTORE_STATE", loaded);
+			return Object.assign({}, state, {
+				active: loaded.active || state.active,
+				view: loaded.view || state.active
+			});
 		default:
 			return state;
 	}

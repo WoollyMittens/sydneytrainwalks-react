@@ -12,16 +12,18 @@ class GuideMenu extends Component {
 
 	onResetGuide(evt) {
 		evt.preventDefault();
-		const {resetPhoto, resetGuide} = this.props;
+		const {resetPhoto, resetGuide, saveState} = this.props;
 		resetPhoto();
 		resetGuide();
+		saveState();
 	}
 
 	onSwitchView(name, evt) {
 		evt.preventDefault();
-		const {resetPhoto, switchView} = this.props;
+		const {resetPhoto, switchView, saveState} = this.props;
 		resetPhoto();
 		switchView(name);
+		saveState();
 	}
 
 	isActive(name) {
