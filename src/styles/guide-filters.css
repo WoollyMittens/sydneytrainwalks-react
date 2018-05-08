@@ -8,7 +8,7 @@
 	border-color: #eee;
 	border-style: solid;
 	border-width: 0 0 1px 0;
-	padding: 0.3rem 1rem;
+	padding: 0.5rem 1rem;
 	background-color: #fff;
 	transform: translate(100%, 0%);
 	transition: transform ease 300ms;
@@ -53,17 +53,16 @@
 	margin: 0;
 	background-color: #FFF;
 	background-repeat: no-repeat;
-	background-position: right center;
-	background-size: auto 60%;
+	background-position: right 50%;
+	background-size: auto 1.5rem;
 	width: 100%;
-	height: 3rem;
+	height: 2.7rem;
 }
 
-.guide-filters label input:focus,
+.guide-filters label input[type=text]:focus,
 .guide-filters label select:focus {
-	border: none;
-	padding: 0.666666666666667rem 0;
 	border-bottom: solid 2px #1976D2;
+	margin-top: 1px;
 }
 
 .guide-filters label input[type=text] {
