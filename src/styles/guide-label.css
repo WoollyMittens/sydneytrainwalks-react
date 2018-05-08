@@ -46,3 +46,15 @@
 	display: block;
 	font-size: 1rem;
 }
+
+.guide-label .guide-label-train {
+	background-color: #F57C00;
+}
+
+.guide-label .guide-label-bus {
+	background-color: #03A9F4;
+}
+
+.guide-label .guide-label-ferry {
+	background-color: #7CB342;
+}

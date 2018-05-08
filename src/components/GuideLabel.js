@@ -24,14 +24,14 @@ class GuideLabel extends Component {
 		const {guide} = this.props;
 		return (
 			<div className="guide-label">
-				<span className="guide-label-station">
+				<span className={"guide-label-station guide-label-" + guide.markers.start.method}>
 					<img alt={guide.markers.start.method} src={this.getIcon(guide.markers.start.method)}/> {guide.markers.start.location}
 				</span>
 				<span className="guide-label-park">
 					{guide.location}
 					<em>{guide.length}km / {guide.duration}hr</em>
 				</span>
-				<span className="guide-label-station">
+				<span className={"guide-label-station guide-label-" + guide.markers.end.method}>
 					<img alt={guide.markers.end.method} src={this.getIcon(guide.markers.end.method)}/> {guide.markers.end.location}
 				</span>
 			</div>);
