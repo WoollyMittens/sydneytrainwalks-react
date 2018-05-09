@@ -73,39 +73,22 @@ class GuideMap extends Component {
 			maxLon = -999;
 		var points = this.flattenCoordinates(route);
 		points.forEach(point => {
-			minLon = (point[0] < minLon)
-				? point[0]
-				: minLon;
-			minLat = (point[1] < minLat)
-				? point[1]
-				: minLat;
-			maxLon = (point[0] > maxLon)
-				? point[0]
-				: maxLon;
-			maxLat = (point[1] > maxLat)
-				? point[1]
-				: maxLat;
+			minLon = (point[0] < minLon) ? point[0] : minLon;
+			minLat = (point[1] < minLat) ? point[1] : minLat;
+			maxLon = (point[0] > maxLon) ? point[0] : maxLon;
+			maxLat = (point[1] > maxLat) ? point[1] : maxLat;
 		});
+		var crossSection = Math.sqrt(Math.pow(maxLat - minLat, 2) + Math.pow(maxLon - minLon, 2));
+		var maxZoom = Math.min(Math.max(Math.ceil(13 - crossSection / 0.333 * 3), 10), 13);
 		return {
 			center: photo
 				? photo.coords
-				: [
-					(maxLat - minLat) / 2 + minLat,
-					(maxLon - minLon) / 2 + minLon
-				],
+				: [(maxLat - minLat) / 2 + minLat, (maxLon - minLon) / 2 + minLon],
 			limits: [
-				[
-					minLat - 0.01,
-					minLon - 0.01
-				],
-				[
-					maxLat + 0.01,
-					maxLon + 0.01
-				]
+				[minLat - 0.01, minLon - 0.01],
+				[maxLat + 0.01, maxLon + 0.01]
 			],
-			zoom: photo
-				? 14
-				: 12,
+			zoom: photo ? 14 : maxZoom,
 			first: points[0],
 			last: points[points.length - 1]
 		};
@@ -114,12 +97,8 @@ class GuideMap extends Component {
 	addLocation() {
 		const icon = new Leaflet.Icon({
 			iconUrl: LocationMarker,
-			iconSize: [
-				32, 32
-			],
-			iconAnchor: [
-				16, 32
-			],
+			iconSize: [32, 32],
+			iconAnchor: [16, 32],
 			popupAnchor: [16, 0]
 		});
 		return this.state.mapLocation
@@ -130,12 +109,8 @@ class GuideMap extends Component {
 	addPhoto(photo) {
 		const icon = new Leaflet.Icon({
 			iconUrl: PhotoMarker,
-			iconSize: [
-				32, 32
-			],
-			iconAnchor: [
-				16, 32
-			],
+			iconSize: [32, 32],
+			iconAnchor: [16, 32],
 			popupAnchor: [16, 0]
 		});
 		return photo
@@ -156,18 +131,13 @@ class GuideMap extends Component {
 		markers.end.lon = markers.end.lon
 			? markers.end.lon
 			: bounds.last[0];
-		var icon,
-			marker;
+		var icon, marker;
 		return Object.keys(markers).map(key => {
 			marker = markers[key];
 			icon = new Leaflet.Icon({
 				iconUrl: require('../markers/' + marker.icon),
-				iconSize: [
-					32, 32
-				],
-				iconAnchor: [
-					16, 32
-				],
+				iconSize: [32, 32],
+				iconAnchor: [16, 32],
 				popupAnchor: [0, -16]
 			});
 			return (<Marker onClick={this.onMarkerOpen.bind(this, [marker.lat, marker.lon])} key={key} position={[marker.lat, marker.lon]} icon={icon}>
