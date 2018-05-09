@@ -78,8 +78,9 @@ class GuideMap extends Component {
 			maxLon = (point[0] > maxLon) ? point[0] : maxLon;
 			maxLat = (point[1] > maxLat) ? point[1] : maxLat;
 		});
-		var crossSection = Math.sqrt(Math.pow(maxLat - minLat, 2) + Math.pow(maxLon - minLon, 2));
-		var maxZoom = Math.min(Math.max(Math.ceil(13 - crossSection / 0.333 * 3), 10), 13);
+		var maxWidth = Math.round(13 - (maxLon - minLon) / 0.333 * 3);
+		var maxHeight = Math.round(13 - (maxLat - minLat) / 0.333 * 3);
+		var maxZoom = Math.max(Math.min(maxWidth, maxHeight, 13), 10);
 		return {
 			center: photo
 				? photo.coords
