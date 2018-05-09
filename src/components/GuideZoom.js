@@ -2,20 +2,14 @@ import React from "react";
 import {Component} from "react";
 import Config from '../config.json';
 import '../styles/guide-zoom.css';
+import PhotoCylinder from '../libraries/photocylinder.js';
+import '../libraries/photocylinder.css';
 
 class GuideZoom extends Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			popupVisible: false
-		};
-	}
 
 	onClosed(evt) {
 		evt.preventDefault();
 		const {resetPhoto} = this.props;
-		this.setState({popupVisible: false});
 		resetPhoto();
 	}
 
@@ -30,19 +24,35 @@ class GuideZoom extends Component {
 		switchView("map");
 	}
 
-	onImageSuccess(evt) {
-		this.setState({popupVisible: true});
+	onImageSuccess(evt) {}
+
+	addPhoto(url, error, success) {
+		setTimeout(function() {
+			new PhotoCylinder().init({
+				'url': url,
+				'container' : document.querySelector('.guide-zoom-stage'),
+				'standalone': true,
+				'spherical' : /fov360/,
+				'cylindrical' : /fov180/,
+				'idle': 0.002,
+				'success': success,
+				'failure': error
+			});
+		}, 0);
 	}
 
 	addZoom(photo) {
-		const mediumImagePath = Config.remoteAssetsURL + "medium/" + photo.key + "/";
-		const popUpVisibility = (this.state.popupVisible) ? " guide-zoom-visible" : " guide-zoom-hidden";
-		return (<figure className={"guide-zoom" + popUpVisibility}>
+		this.addPhoto(
+			Config.remoteAssetsURL + "medium/" + photo.key + "/" + photo.name,
+			this.onImageFailed.bind(this),
+			this.onImageSuccess.bind(this)
+		);
+		return (<figure className="guide-zoom">
 			<figcaption className="guide-zoom-controls">
 				<button className="guide-zoom-locate" onClick={this.onLocate.bind(this)}>Locate on map</button>
 				<button className="guide-zoom-close" onClick={this.onClosed.bind(this)}>Close</button>
 			</figcaption>
-			<img onLoad={this.onImageSuccess.bind(this)} onError={this.onImageFailed.bind(this)} alt="" src={mediumImagePath + photo.name}/>
+			<div className="guide-zoom-stage"></div>
 		</figure>);
 	}
 
