@@ -29,19 +29,13 @@ class GuideList extends Component {
 				sorter = (a, b) => guides[a].length - guides[b].length;
 				break;
 			case 'start':
-				sorter = (a, b) => guides[a].markers.start.location > guides[b].markers.start.location
-					? 1
-					: -1;
+				sorter = (a, b) => guides[a].markers.start.location > guides[b].markers.start.location ? 1 : -1;
 				break;
 			case 'end':
-				sorter = (a, b) => guides[a].markers.end.location > guides[b].markers.end.location
-					? 1
-					: -1;
+				sorter = (a, b) => guides[a].markers.end.location > guides[b].markers.end.location ? 1 : -1;
 				break;
 			case 'region':
-				sorter = (a, b) => guides[a].location > guides[b].location
-					? 1
-					: -1;
+				sorter = (a, b) => guides[a].location > guides[b].location ? 1 : -1;
 				break;
 			default:
 				sorter = (a, b) => a - b;

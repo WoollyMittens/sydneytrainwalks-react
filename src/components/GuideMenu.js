@@ -36,12 +36,12 @@ class GuideMenu extends Component {
 	getItems(active, view) {
 		var items = [];
 		items.push(<button className={this.isActive("home")} key="guide-menu-home" onClick={this.onResetGuide.bind(this)}><img alt="" src={homeIcon}/> Home</button>);
+		items.push(<button className={this.isActive("overview")} key="guide-menu-overview" onClick={this.onSwitchView.bind(this, "overview")}><img alt="" src={overviewIcon}/> Overview</button>);
 		if (active) {
 			items.push(<button className={this.isActive("map")} key="guide-menu-map" onClick={this.onSwitchView.bind(this, "map")}><img alt="" src={mapIcon}/> Map</button>);
 			items.push(<button className={this.isActive("details")} key="guide-menu-details" onClick={this.onSwitchView.bind(this, "details")}><img alt="" src={detailsIcon}/> Guide</button>);
 			items.push(<button className={this.isActive("gallery")} key="guide-menu-gallery" onClick={this.onSwitchView.bind(this, "gallery")}><img alt="" src={galleryIcon}/> Photos</button>);
 		} else {
-			items.push(<button className={this.isActive("overview")} key="guide-menu-overview" onClick={this.onSwitchView.bind(this, "overview")}><img alt="" src={overviewIcon}/> Overview</button>);
 			items.push(<button className={this.isActive("about")} key="guide-menu-about" onClick={this.onSwitchView.bind(this, "about")}><img alt="" src={aboutIcon}/> About</button>);
 		}
 		return items;

@@ -61,14 +61,8 @@ class GuideOverview extends Component {
 				(maxLon - minLon) / 2 + minLon
 			],
 			limits: [
-				[
-					minLat - 0.0,
-					minLon - 0.2
-				],
-				[
-					maxLat + 0.4,
-					maxLon + 0.4
-				]
+				[minLat - 0.0, minLon - 0.2],
+				[maxLat + 0.4, maxLon + 0.4]
 			]
 		};
 	}
@@ -78,12 +72,8 @@ class GuideOverview extends Component {
 			halfway;
 		const icon = new Leaflet.Icon({
 			iconUrl: WalkMarker,
-			iconSize: [
-				32, 32
-			],
-			iconAnchor: [
-				16, 32
-			],
+			iconSize: [32, 32],
+			iconAnchor: [16, 32],
 			popupAnchor: [0, -16]
 		});
 		return Object.keys(routes).map(key => {
@@ -96,12 +86,8 @@ class GuideOverview extends Component {
 	addLocation() {
 		const icon = new Leaflet.Icon({
 			iconUrl: LocationMarker,
-			iconSize: [
-				32, 32
-			],
-			iconAnchor: [
-				16, 32
-			],
+			iconSize: [32, 32],
+			iconAnchor: [16, 32],
 			popupAnchor: [16, 0]
 		});
 		return this.state.mapLocation
@@ -119,6 +105,7 @@ class GuideOverview extends Component {
 
 	render() {
 		const {routes} = this.props;
+		console.log("routes", routes);
 		return routes
 			? (<figure className="guide-overview">{this.addMap(routes)}</figure>)
 			: null;

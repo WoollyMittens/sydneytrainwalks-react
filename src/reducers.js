@@ -35,7 +35,8 @@ function appReducer(state = defaultState, action) {
 		case PICK_GUIDE:
 			return Object.assign({}, state, {
 				active: action.key,
-				view: "map"
+				view: "map",
+				previous: "details"
 			});
 		case RESET_GUIDE:
 			return Object.assign({}, state, {

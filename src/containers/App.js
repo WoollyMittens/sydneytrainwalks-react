@@ -100,6 +100,7 @@ class App extends Component {
 		components.push(<GuideTitle key="app-title"/>);
 		if (active) {
 			components.push(<GuideHeader key="app-header" guide={guide}/>);
+			components.push(<GuideOverview key="app-overview" routes={routes} pickGuide={actions.pickGuide} saveState={actions.saveState}/>);
 			components.push(<GuideMap key="app-map" route={route} markers={markers} photo={photo} previousView={actions.previousView}/>);
 			components.push(<GuideZoom key="app-zoom" photo={photo} resetPhoto={actions.resetPhoto} switchView={actions.switchView}/>);
 			components.push(<GuideDetails key="app-details" guide={guide} active={active} pickPhoto={actions.pickPhoto}/>);
