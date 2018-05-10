@@ -15,6 +15,9 @@ import GuideMenu from "../components/GuideMenu";
 import GuideOverview from "../components/GuideOverview";
 import GuideAbout from "../components/GuideAbout";
 import GuideHeader from "../components/GuideHeader";
+import guidesJSON from "../data/guides.json";
+import photosJSON from "../data/photos.json";
+import routesJSON from "../data/routes.json";
 import '../styles/app.css';
 import '../libraries/normalize.min.css';
 import '../libraries/leaflet.css';
@@ -22,18 +25,25 @@ import '../libraries/leaflet.css';
 class App extends Component {
 
 	componentDidMount() {
-		this.loadData();
+		this.remoteData();
 	}
 
-	loadData() {
+	localData() {
+		const {actions} = this.props;
+		actions.importData({'guides': guidesJSON, 'routes': routesJSON, 'photos': photosJSON});
+		actions.loadState();
+	}
+
+	remoteData() {
 		Promise.all([
-			fetch(Config.guidesURL),
-			fetch(Config.routesURL),
-			fetch(Config.photosURL)
+			fetch(Config.guidesURL + "zzz"),
+			fetch(Config.routesURL + "zzz"),
+			fetch(Config.photosURL + "zzz")
 		]).then(([guidesResponse, routesResponse, photosResponse]) => {
 			this.processData(guidesResponse, routesResponse, photosResponse);
 		}).catch((err) => {
 			console.log(err);
+			this.localData();
 		});
 	}
 
@@ -44,6 +54,7 @@ class App extends Component {
 			actions.loadState();
 		}).catch((err) => {
 			console.log(err);
+			this.localData();
 		});
 	}
 
