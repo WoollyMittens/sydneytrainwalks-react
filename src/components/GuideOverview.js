@@ -105,7 +105,6 @@ class GuideOverview extends Component {
 
 	render() {
 		const {routes} = this.props;
-		console.log("routes", routes);
 		return routes
 			? (<figure className="guide-overview">{this.addMap(routes)}</figure>)
 			: null;

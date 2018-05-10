@@ -159,11 +159,18 @@ class GuideMap extends Component {
 		return <GeoJSON key={key} data={route} style={routeStyles}/>;
 	}
 
+	onTileError(e) {
+		console.log("onTileError", e, e.tile);
+		if (/^http/i.test(e.target["_url"])) {
+			e.tile.src = Config.localMapURL.replace("{x}", e.coords.x).replace("{y}", e.coords.y).replace("{z}", e.coords.z);
+		}
+	}
+
 	addMap() {
 		const {route, markers, photo} = this.props;
 		const bounds = this.calculateBounds(route, photo);
 		return (<Map center={bounds.center} maxBounds={bounds.limits} minZoom={10} zoom={bounds.zoom} maxZoom={15}>
-			<TileLayer attribution={Config.mapAttribution} url={Config.localMapURL}/> {this.addRoute(route)}
+			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/> {this.addRoute(route)}
 			{this.addMarkers(markers, bounds)}
 			{this.addLocation()}
 			{this.addPhoto(photo)}
