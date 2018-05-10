@@ -18,7 +18,7 @@ var defaultState = {
 	guides: null,
 	exif: null,
 	gpx: null,
-	sorted: "",
+	sorted: "shortest",
 	filtered: "",
 	view: "home",
 	previous: "details"

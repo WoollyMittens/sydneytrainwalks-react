@@ -10,11 +10,20 @@ import galleryIcon from "../icons/nature_1.svg";
 
 class GuideMenu extends Component {
 
-	onResetGuide(evt) {
+	onSwitchHome(evt) {
 		evt.preventDefault();
 		const {resetPhoto, resetGuide, saveState} = this.props;
 		resetPhoto();
 		resetGuide();
+		saveState();
+	}
+
+	onSwitchOverview(name, evt) {
+		evt.preventDefault();
+		const {resetPhoto, switchView, resetGuide, saveState} = this.props;
+		resetPhoto();
+		resetGuide();
+		switchView(name);
 		saveState();
 	}
 
@@ -35,8 +44,8 @@ class GuideMenu extends Component {
 
 	getItems(active, view) {
 		var items = [];
-		items.push(<button className={this.isActive("home")} key="guide-menu-home" onClick={this.onResetGuide.bind(this)}><img alt="" src={homeIcon}/> Home</button>);
-		items.push(<button className={this.isActive("overview")} key="guide-menu-overview" onClick={this.onSwitchView.bind(this, "overview")}><img alt="" src={overviewIcon}/> Overview</button>);
+		items.push(<button className={this.isActive("home")} key="guide-menu-home" onClick={this.onSwitchHome.bind(this)}><img alt="" src={homeIcon}/> Home</button>);
+		items.push(<button className={this.isActive("overview")} key="guide-menu-overview" onClick={this.onSwitchOverview.bind(this, "overview")}><img alt="" src={overviewIcon}/> Overview</button>);
 		if (active) {
 			items.push(<button className={this.isActive("map")} key="guide-menu-map" onClick={this.onSwitchView.bind(this, "map")}><img alt="" src={mapIcon}/> Map</button>);
 			items.push(<button className={this.isActive("details")} key="guide-menu-details" onClick={this.onSwitchView.bind(this, "details")}><img alt="" src={detailsIcon}/> Guide</button>);

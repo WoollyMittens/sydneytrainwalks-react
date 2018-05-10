@@ -16,6 +16,8 @@ import GuideOverview from "../components/GuideOverview";
 import GuideAbout from "../components/GuideAbout";
 import GuideHeader from "../components/GuideHeader";
 import '../styles/app.css';
+import '../libraries/normalize.min.css';
+import '../libraries/leaflet.css';
 
 class App extends Component {
 
@@ -37,8 +39,8 @@ class App extends Component {
 
 	processData(guidesResponse, routesResponse, photosResponse) {
 		const {actions} = this.props;
-		Promise.all([guidesResponse.json(), routesResponse.json(), photosResponse.json()]).then(([guidesJson, routesJson, photosJson]) => {
-			actions.importData({'guides': guidesJson, 'routes': routesJson, 'photos': photosJson});
+		Promise.all([guidesResponse.json(), routesResponse.json(), photosResponse.json()]).then(([guidesJSON, routesJSON, photosJSON]) => {
+			actions.importData({'guides': guidesJSON, 'routes': routesJSON, 'photos': photosJSON});
 			actions.loadState();
 		}).catch((err) => {
 			console.log(err);

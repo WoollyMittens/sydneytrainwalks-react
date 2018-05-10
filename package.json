@@ -2,6 +2,7 @@
   "name": "import-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "leaflet": "^1.3.1",
     "react": "^16.3.0",

@@ -4,7 +4,17 @@ import {Map, TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
 import Config from "../config.json";
 import Leaflet from "leaflet";
 import LocationMarker from "../markers/marker-location.png";
+import TrainMarker from "../markers/marker-train.png";
+import FerryMarker from "../markers/marker-ferry.png";
+import BusMarker from "../markers/marker-bus.png";
+import InfoMarker from "../markers/marker-info.png";
+import WarningMarker from "../markers/marker-warning.png";
+import ToiletMarker from "../markers/marker-toilet.png";
+import KioskMarker from "../markers/marker-kiosk.png";
+import LandmarkMarker from "../markers/marker-landmark.png";
 import PhotoMarker from "../markers/marker-photo.png";
+import TentMarker from "../markers/marker-tent.png";
+import HotelMarker from "../markers/marker-hotel.png";
 import '../styles/guide-map.css';
 
 class GuideMap extends Component {
@@ -29,6 +39,26 @@ class GuideMap extends Component {
 
 	componentWillUnmount() {
 		navigator.geolocation.clearWatch(this.watcher);
+	}
+
+	pickMarker(type) {
+		var marker;
+		switch(type) {
+			case "location": marker = LocationMarker; break;
+			case "train": marker = TrainMarker; break;
+			case "ferry": marker = FerryMarker; break;
+			case "bus": marker = BusMarker; break;
+			case "warning": marker = WarningMarker; break;
+			case "toilet": marker = ToiletMarker; break;
+			case "kiosk": marker = KioskMarker; break;
+			case "landmark": marker = LandmarkMarker; break;
+			case "photo": marker = PhotoMarker; break;
+			case "tent": marker = TentMarker; break;
+			case "hotel": marker = HotelMarker; break;
+			case "info": marker = InfoMarker; break;
+			default: marker = LocationMarker;
+		}
+		return marker;
 	}
 
 	onReturn(evt) {
@@ -136,7 +166,7 @@ class GuideMap extends Component {
 		return Object.keys(markers).map(key => {
 			marker = markers[key];
 			icon = new Leaflet.Icon({
-				iconUrl: require('../markers/' + marker.icon),
+				iconUrl: this.pickMarker(marker.icon),
 				iconSize: [32, 32],
 				iconAnchor: [16, 32],
 				popupAnchor: [0, -16]
