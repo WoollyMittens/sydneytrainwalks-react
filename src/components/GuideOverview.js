@@ -18,7 +18,7 @@ class GuideOverview extends Component {
 
 	onPickGuide(key) {
 		const {pickGuide, saveState} = this.props;
-		pickGuide(key);
+		pickGuide(key, "overview");
 		saveState();
 	}
 
@@ -38,22 +38,13 @@ class GuideOverview extends Component {
 			minLon = 999,
 			maxLat = -999,
 			maxLon = -999;
-		// TODO: pick the coordinates of a photo along the route
 		Object.keys(routes).forEach(key => {
 			route = this.flattenCoordinates(routes[key]);
 			halfway = route[parseInt(route.length / 2, 10)];
-			minLon = (halfway[0] < minLon)
-				? halfway[0]
-				: minLon;
-			minLat = (halfway[1] < minLat)
-				? halfway[1]
-				: minLat;
-			maxLon = (halfway[0] > maxLon)
-				? halfway[0]
-				: maxLon;
-			maxLat = (halfway[1] > maxLat)
-				? halfway[1]
-				: maxLat;
+			minLon = (halfway[0] < minLon) ? halfway[0] : minLon;
+			minLat = (halfway[1] < minLat) ? halfway[1] : minLat;
+			maxLon = (halfway[0] > maxLon) ? halfway[0] : maxLon;
+			maxLat = (halfway[1] > maxLat) ? halfway[1] : maxLat;
 		});
 		return {
 			center: [
@@ -61,8 +52,8 @@ class GuideOverview extends Component {
 				(maxLon - minLon) / 2 + minLon
 			],
 			limits: [
-				[minLat - 0.0, minLon - 0.2],
-				[maxLat + 0.4, maxLon + 0.4]
+				[minLat - 0.3, minLon - 0.3],
+				[maxLat + 0.3, maxLon + 0.3]
 			]
 		};
 	}
@@ -95,10 +86,17 @@ class GuideOverview extends Component {
 			: null;
 	}
 
+	onTileError(e) {
+		if (/\/tiles\//i.test(e.target["_url"])) {
+			e.tile.src = Config.localMapURL.replace("{x}", e.coords.x).replace("{y}", e.coords.y).replace("{z}", e.coords.z);
+		}
+	}
+
 	addMap(routes) {
 		const bounds = this.calculateBounds(routes);
-		return (<Map center={bounds.center} maxBounds={bounds.limits} minZoom={8} zoom={8} maxZoom={15}>
-			<TileLayer attribution={Config.mapAttribution} url={Config.localMapURL}/> {this.addMarkers(routes)}
+		return (<Map bounds={bounds.limits} maxBounds={bounds.limits} minZoom={8} maxZoom={15}>
+			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/>
+			{this.addMarkers(routes)}
 			{this.addLocation()}
 		</Map>);
 	}

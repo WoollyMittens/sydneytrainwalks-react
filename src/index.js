@@ -6,4 +6,13 @@ import App from "./containers/App";
 import appReducer from "./reducers";
 const store = createStore(appReducer);
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("root"));
+if (!window.cordova) {
+	var onDeviceReady = new Event("deviceready");
+	window.requestAnimationFrame(function() {
+		document.dispatchEvent(onDeviceReady);
+	});
+};
+
+document.addEventListener('deviceready', function() {
+	ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("root"));
+}, false);

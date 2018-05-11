@@ -8,6 +8,7 @@ import {
 	FILTER_GUIDES,
 	SWITCH_VIEW,
 	PREVIOUS_VIEW,
+	ORIGIN_VIEW,
 	SAVE_STATE,
 	LOAD_STATE
 } from "./actions";
@@ -21,7 +22,8 @@ var defaultState = {
 	sorted: "shortest",
 	filtered: "",
 	view: "home",
-	previous: "details"
+	previous: "details",
+	origin: "home"
 };
 
 function appReducer(state = defaultState, action) {
@@ -36,7 +38,8 @@ function appReducer(state = defaultState, action) {
 			return Object.assign({}, state, {
 				active: action.key,
 				view: "map",
-				previous: "details"
+				previous: "details",
+				origin: action.origin
 			});
 		case RESET_GUIDE:
 			return Object.assign({}, state, {
@@ -68,8 +71,14 @@ function appReducer(state = defaultState, action) {
 		case PREVIOUS_VIEW:
 			return Object.assign({}, state, {
 				view: state.previous,
-				previous: state.view
+				previous: "home"
 			});
+		case ORIGIN_VIEW:
+		return Object.assign({}, state, {
+			active: null,
+			view: state.origin,
+			previous: "details"
+		});
 		case SAVE_STATE:
 			localStorage.setItem("saved", JSON.stringify({"active": state.active, "view": state.view}));
 			return state;

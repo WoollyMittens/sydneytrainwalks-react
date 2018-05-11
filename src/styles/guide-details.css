@@ -27,6 +27,7 @@
 .guide-details .guide-landmark,
 .guide-details .guide-optional {
 	display: flex;
+	align-items: center;
 }
 
 .guide-details .guide-optional {

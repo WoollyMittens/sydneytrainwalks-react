@@ -112,9 +112,10 @@ class GuideMap extends Component {
 		var maxHeight = Math.round(13 - (maxLat - minLat) / 0.333 * 3);
 		var maxZoom = Math.max(Math.min(maxWidth, maxHeight, 13), 10);
 		return {
-			center: photo
-				? photo.coords
-				: [(maxLat - minLat) / 2 + minLat, (maxLon - minLon) / 2 + minLon],
+			center: photo ? photo.coords : [
+				(maxLat - minLat) / 2 + minLat,
+				(maxLon - minLon) / 2 + minLon
+			],
 			limits: [
 				[minLat - 0.01, minLon - 0.01],
 				[maxLat + 0.01, maxLon + 0.01]
@@ -166,7 +167,7 @@ class GuideMap extends Component {
 		return Object.keys(markers).map(key => {
 			marker = markers[key];
 			icon = new Leaflet.Icon({
-				iconUrl: this.pickMarker(marker.icon),
+				iconUrl: this.pickMarker(marker.type),
 				iconSize: [32, 32],
 				iconAnchor: [16, 32],
 				popupAnchor: [0, -16]
@@ -190,8 +191,7 @@ class GuideMap extends Component {
 	}
 
 	onTileError(e) {
-		console.log("onTileError", e, e.tile);
-		if (/^http/i.test(e.target["_url"])) {
+		if (/\/tiles\//i.test(e.target["_url"])) {
 			e.tile.src = Config.localMapURL.replace("{x}", e.coords.x).replace("{y}", e.coords.y).replace("{z}", e.coords.z);
 		}
 	}
@@ -199,8 +199,9 @@ class GuideMap extends Component {
 	addMap() {
 		const {route, markers, photo} = this.props;
 		const bounds = this.calculateBounds(route, photo);
-		return (<Map center={bounds.center} maxBounds={bounds.limits} minZoom={10} zoom={bounds.zoom} maxZoom={15}>
-			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/> {this.addRoute(route)}
+		return (<Map bounds={bounds.limits} maxBounds={bounds.limits} minZoom={10} maxZoom={15}>
+			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/>
+			{this.addRoute(route)}
 			{this.addMarkers(markers, bounds)}
 			{this.addLocation()}
 			{this.addPhoto(photo)}

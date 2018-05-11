@@ -7,6 +7,7 @@ export const SORT_GUIDES = "SORT_GUIDES";
 export const FILTER_GUIDES = "FILTER_GUIDES";
 export const SWITCH_VIEW = "SWITCH_VIEW";
 export const PREVIOUS_VIEW = "PREVIOUS_VIEW";
+export const ORIGIN_VIEW = "ORIGIN_VIEW";
 export const SAVE_STATE = "SAVE_STATE";
 export const LOAD_STATE = "LOAD_STATE";
 
@@ -14,8 +15,8 @@ export function importData(data) {
 	return {type: IMPORT_DATA, data};
 }
 
-export function pickGuide(key) {
-	return {type: PICK_GUIDE, key};
+export function pickGuide(key, origin) {
+	return {type: PICK_GUIDE, key, origin};
 }
 
 export function resetGuide() {
@@ -44,6 +45,10 @@ export function switchView(name) {
 
 export function previousView() {
 	return {type: PREVIOUS_VIEW};
+}
+
+export function originView() {
+	return {type: ORIGIN_VIEW};
 }
 
 export function saveState() {

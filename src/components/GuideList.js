@@ -8,7 +8,7 @@ class GuideList extends Component {
 	onPickGuide(key, evt) {
 		evt.preventDefault();
 		const {pickGuide, saveState} = this.props;
-		pickGuide(key);
+		pickGuide(key, "home");
 		saveState();
 	}
 

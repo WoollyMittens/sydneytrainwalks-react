@@ -7,8 +7,8 @@ import ferryIcon from "../icons/sign_water_transport.svg";
 
 class GuideLabel extends Component {
 
-	getIcon(method) {
-		switch (method) {
+	getIcon(type) {
+		switch (type) {
 			case "train":
 				return trainIcon;
 			case "bus":
@@ -24,15 +24,15 @@ class GuideLabel extends Component {
 		const {guide} = this.props;
 		return (
 			<div className="guide-label">
-				<span className={"guide-label-station guide-label-" + guide.markers.start.method}>
-					<img alt={guide.markers.start.method} src={this.getIcon(guide.markers.start.method)}/> {guide.markers.start.location}
+				<span className={"guide-label-station guide-label-" + guide.markers.start.type}>
+					<img alt={guide.markers.start.type} src={this.getIcon(guide.markers.start.type)}/> {guide.markers.start.location}
 				</span>
 				<span className="guide-label-park">
 					{guide.location}
 					<em>{guide.length}km / {guide.duration}hr</em>
 				</span>
-				<span className={"guide-label-station guide-label-" + guide.markers.end.method}>
-					<img alt={guide.markers.end.method} src={this.getIcon(guide.markers.end.method)}/> {guide.markers.end.location}
+				<span className={"guide-label-station guide-label-" + guide.markers.end.type}>
+					<img alt={guide.markers.end.type} src={this.getIcon(guide.markers.end.type)}/> {guide.markers.end.location}
 				</span>
 			</div>);
 	}

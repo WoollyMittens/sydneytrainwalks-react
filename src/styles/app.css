@@ -77,3 +77,9 @@ ul li {}
 .guide-app *:focus {
     outline: none;
 }
+
+@media (max-width:320px) {
+	html h1 {
+		font-size: 1.667em;
+	}
+}

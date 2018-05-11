@@ -26,6 +26,7 @@ class App extends Component {
 
 	componentDidMount() {
 		this.remoteData();
+		document.body.addEventListener("click", this.remoteLink.bind(this));
 	}
 
 	localData() {
@@ -36,9 +37,9 @@ class App extends Component {
 
 	remoteData() {
 		Promise.all([
-			fetch(Config.guidesURL + "zzz"),
-			fetch(Config.routesURL + "zzz"),
-			fetch(Config.photosURL + "zzz")
+			fetch(Config.guidesURL),
+			fetch(Config.routesURL),
+			fetch(Config.photosURL)
 		]).then(([guidesResponse, routesResponse, photosResponse]) => {
 			this.processData(guidesResponse, routesResponse, photosResponse);
 		}).catch((err) => {
@@ -56,6 +57,14 @@ class App extends Component {
 			console.log(err);
 			this.localData();
 		});
+	}
+
+	remoteLink(evt) {
+		const href = evt.target.getAttribute("href");
+		if(/^http/i.test(href)) {
+			evt.preventDefault();
+			window.open(href, '_system', 'location=yes');
+		}
 	}
 
 	prepareGallery(active, guides, photos) {
@@ -124,7 +133,7 @@ class App extends Component {
 			components.push(<GuideOverview key="app-overview" routes={routes} pickGuide={actions.pickGuide} saveState={actions.saveState}/>);
 			components.push(<GuideAbout key="app-about"/>);
 		}
-		components.push(<GuideMenu key="app-menu" active={active} view={view} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView} saveState={actions.saveState}/>);
+		components.push(<GuideMenu key="app-menu" active={active} view={view} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView} originView={actions.originView} saveState={actions.saveState}/>);
 		return (components);
 	}
 
@@ -146,7 +155,8 @@ function mapStateToProps(state, props) {
 		filtered: state.filtered,
 		sorted: state.sorted,
 		view: state.view,
-		previous: state.previous
+		previous: state.previous,
+		origin: state.origin
 	};
 }
 
