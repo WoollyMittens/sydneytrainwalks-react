@@ -61,7 +61,7 @@ class App extends Component {
 
 	remoteLink(evt) {
 		const href = evt.target.getAttribute("href");
-		if(/^http/i.test(href)) {
+		if(/^http/i.test(href) && !/.jpg$/i.test(href)) {
 			evt.preventDefault();
 			window.open(href, '_system', 'location=yes');
 		}
