@@ -16,6 +16,26 @@ class GuideOverview extends Component {
 		};
 	}
 
+	componentWillMount() {
+		this.watcher = ("geolocation" in navigator)
+			? navigator.geolocation.watchPosition(this.onUpdatedLocation.bind(this), this.onFailedLocation.bind(this), {
+				enableHighAccuracy: true,
+				maximumAge: 30000,
+				timeout: 27000
+			})
+			: null;
+	}
+
+	onFailedLocation(e) {
+		console.log(e);
+	}
+
+	onUpdatedLocation(result) {
+		this.setState({
+			mapLocation: [result.coords.latitude, result.coords.longitude]
+		});
+	}
+
 	onPickGuide(key) {
 		const {pickGuide, saveState} = this.props;
 		pickGuide(key, "overview");
@@ -87,7 +107,7 @@ class GuideOverview extends Component {
 	}
 
 	onTileError(e) {
-		if (/\/tiles\//i.test(e.target["_url"])) {
+		if (!/\/tiles\//i.test(e.tile.src)) {
 			e.tile.src = Config.localMapURL.replace("{x}", e.coords.x).replace("{y}", e.coords.y).replace("{z}", e.coords.z);
 		}
 	}

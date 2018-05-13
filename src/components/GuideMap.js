@@ -73,7 +73,7 @@ class GuideMap extends Component {
 
 	onUpdatedLocation(result) {
 		this.setState({
-			location: [result.coords.latitude, result.coords.longitude]
+			mapLocation: [result.coords.latitude, result.coords.longitude]
 		});
 	}
 
@@ -191,7 +191,7 @@ class GuideMap extends Component {
 	}
 
 	onTileError(e) {
-		if (/\/tiles\//i.test(e.target["_url"])) {
+		if (!/\/tiles\//i.test(e.tile.src)) {
 			e.tile.src = Config.localMapURL.replace("{x}", e.coords.x).replace("{y}", e.coords.y).replace("{z}", e.coords.z);
 		}
 	}
