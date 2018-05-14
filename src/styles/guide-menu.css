@@ -17,7 +17,7 @@
 .guide-menu nav {
 	flex: 1 1 auto;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: center;
 }
 
