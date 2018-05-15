@@ -20,7 +20,8 @@ class GuideZoom extends Component {
 	}
 
 	onImageFailed(evt) {
-		const {switchView} = this.props;
+		const {resetPhoto, switchView} = this.props;
+		resetPhoto();
 		switchView("map");
 	}
 
@@ -32,7 +33,7 @@ class GuideZoom extends Component {
 				'url': url,
 				'container' : document.querySelector('.guide-zoom-stage'),
 				'standalone': true,
-				'spherical' : /fov360/,
+				'spherical' : /fov360|_r|^r/,
 				'cylindrical' : /fov180/,
 				'idle': 0.002,
 				'success': success,
