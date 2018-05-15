@@ -39,3 +39,13 @@
 	cursor: pointer;
 	min-height: 4rem;
 }
+
+@media (min-width:1024px) {
+	.guide-list {
+		left: 50%;
+		transform: translate(100%, 0%);
+	}
+	.guide-view-overview .guide-list {
+		transform: translate(0%, 0%);
+	}
+}

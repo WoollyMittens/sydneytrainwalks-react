@@ -78,3 +78,13 @@
 	top: 50%;
 	transform: translate(-50%, -50%);
 }
+
+@media (min-width:1024px) {
+	.guide-details {
+		left: 50%;
+		transform: translate(100%, 0%);
+	}
+	.guide-view-map .guide-details {
+		transform: translate(0%, 0%);
+	}
+}

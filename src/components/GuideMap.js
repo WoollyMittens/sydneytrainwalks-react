@@ -199,7 +199,7 @@ class GuideMap extends Component {
 	addMap() {
 		const {route, markers, photo} = this.props;
 		const bounds = this.calculateBounds(route, photo);
-		return (<Map bounds={bounds.limits} maxBounds={bounds.limits} minZoom={10} maxZoom={15}>
+		return (<Map bounds={bounds.limits} maxBounds={bounds.limits} minZoom={10} center={bounds.center} zoom={bounds.zoom} maxZoom={15}>
 			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/>
 			{this.addRoute(route)}
 			{this.addMarkers(markers, bounds)}

@@ -44,3 +44,17 @@
 	background-size: 2rem auto;
 	text-indent: 4rem;
 }
+
+@media (min-width:1024px) {
+	.guide-map {
+		right: 50%;
+		transform: translate(-100%, 0%);
+	}
+	.guide-view-details .guide-map,
+	.guide-view-gallery .guide-map {
+		transform: translate(0%, 0%);
+	}
+	.guide-map-return {
+		display: none;
+	}
+}

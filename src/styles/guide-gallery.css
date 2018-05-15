@@ -52,3 +52,10 @@
 		max-width: 50%;
 	}
 }
+
+@media (min-width:1024px) {
+	.guide-gallery {
+		left: 50%;
+		transform: translate(100%, 0%);
+	}
+}

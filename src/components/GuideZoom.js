@@ -7,6 +7,11 @@ import '../libraries/photocylinder.css';
 
 class GuideZoom extends Component {
 
+	constructor(props) {
+		super(props);
+		this.refs = React.createRef();
+	}
+
 	onClosed(evt) {
 		evt.preventDefault();
 		const {resetPhoto} = this.props;
@@ -21,13 +26,15 @@ class GuideZoom extends Component {
 
 	onImageFailed(evt) {
 		const {resetPhoto, switchView} = this.props;
+		this.refs.guide_zoom.style.visibility = "hidden";
 		switchView("map");
 	}
 
 	onImageSuccess(evt) {}
 
 	addPhoto(url, error, success) {
-		setTimeout(function() {
+		window.requestAnimationFrame(evt => {
+			this.refs.guide_zoom.style.visibility = "visible";
 			new PhotoCylinder().init({
 				'url': url,
 				'container' : document.querySelector('.guide-zoom-stage'),
@@ -38,7 +45,7 @@ class GuideZoom extends Component {
 				'success': success,
 				'failure': error
 			});
-		}, 0);
+		});
 	}
 
 	addZoom(photo) {
@@ -47,7 +54,7 @@ class GuideZoom extends Component {
 			this.onImageFailed.bind(this),
 			this.onImageSuccess.bind(this)
 		);
-		return (<figure className="guide-zoom">
+		return (<figure ref="guide_zoom" className="guide-zoom">
 			<figcaption className="guide-zoom-controls">
 				<button className="guide-zoom-locate" onClick={this.onLocate.bind(this)}>Locate on map</button>
 				<button className="guide-zoom-close" onClick={this.onClosed.bind(this)}>Close</button>

@@ -23,3 +23,15 @@
 	height: 100%;
 	z-index: 1;
 }
+
+@media (min-width:1024px) {
+	.guide-overview {
+		right: 50%;
+		transform: translate(-100%, 0%);
+		top: 8.666666666666667rem;
+	}
+	.guide-view-home .guide-overview,
+	.guide-view-overview .guide-overview {
+		transform: translate(0%, 0%);
+	}
+}
