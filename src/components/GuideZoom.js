@@ -21,7 +21,6 @@ class GuideZoom extends Component {
 
 	onImageFailed(evt) {
 		const {resetPhoto, switchView} = this.props;
-		resetPhoto();
 		switchView("map");
 	}
 

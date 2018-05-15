@@ -66,12 +66,13 @@ function appReducer(state = defaultState, action) {
 		case SWITCH_VIEW:
 			return Object.assign({}, state, {
 				view: action.name,
-				previous: state.view
+				previous: (action.name !== state.view) ? state.view : state.previous
 			});
 		case PREVIOUS_VIEW:
 			return Object.assign({}, state, {
 				view: state.previous,
-				previous: "home"
+				previous: "home",
+				highlight: null
 			});
 		case ORIGIN_VIEW:
 		return Object.assign({}, state, {
