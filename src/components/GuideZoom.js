@@ -25,7 +25,7 @@ class GuideZoom extends Component {
 	}
 
 	onImageFailed(evt) {
-		const {resetPhoto, switchView} = this.props;
+		const {switchView} = this.props;
 		this.refs.guide_zoom.style.visibility = "hidden";
 		switchView("map");
 	}
