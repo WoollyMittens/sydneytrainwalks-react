@@ -20,3 +20,33 @@
 .guide-view-about .guide-title {
 	box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
 }
+
+.guide-about:before {
+	content: "";
+	display: block;
+	height: 25vh;
+	background-image: url("../backgrounds/photo-1024x750.jpg");
+	background-size: cover;
+	background-position: center;
+	margin: -2rem -2rem 2rem;
+}
+
+.guide-about figure {
+	display: flex;
+	align-items: center;
+	margin: 0 0 2rem 0;
+}
+
+.guide-about figure img {
+	flex: 0 1 auto;
+	margin: 0 1rem 0 0;
+	width: 10rem;
+	height: auto;
+	vertical-align: middle;
+}
+
+.guide-about figure figcaption {
+	flex: 1 1 auto;
+}
+
+.guide-about figure figcaption strong {}

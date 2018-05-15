@@ -41,12 +41,18 @@ class GuideDetails extends Component {
 	}
 
 	addDetails(guide) {
+		const {active} = this.props;
 		return (<article className="guide-details">
 			<div dangerouslySetInnerHTML={this.getDescription(guide.description)}></div>
 			<div className="guide-instructions">
-				<p>It takes about TODO hours to complete the full TODO kilometre walk, with plenty of breaks and photography stops. A brisk walker can do this much faster, but consider that there's a lot to see along the way.</p>
+				<p>{"It takes about " + guide.duration + " hours to complete the full " + guide.length + " kilometre walk, with plenty of breaks and photography stops. A brisk walker can do this much faster, but consider that there's a lot to see along the way."}</p>
 				<h2>Getting there and back</h2>
-				<p>Get the TODO to TODO using <a href="https://transportnsw.info/trip#/?to=TODO">transportnsw.info</a>. Plan your return trip from TODO at <a href="https://transportnsw.info/trip#/?to=TODO">transportnsw.info</a>.</p>
+				<p>
+					{"Get the " + guide.markers.start.type + " to " + guide.markers.start.location + " using "}
+					<a href={"https://transportnsw.info/trip#/?to=" + guide.markers.start.location}>transportnsw.info</a>.{" "}
+					{"Plan your return trip from " + guide.markers.end.location + " at "}
+					<a href={"https://transportnsw.info/trip#/?to=" + guide.markers.end.location}>transportnsw.info</a>.
+				</p>
 				<h2>Along the way</h2>
 			</div>
 			{this.getLandmarks(guide.landmarks, guide.assets)}
@@ -55,7 +61,7 @@ class GuideDetails extends Component {
 				<ul>
 					<li>Check the <a href="http://www.nationalparks.nsw.gov.au/alert/state-alerts">national parks website</a> for possible detours, closures and restrictions.</li>
 					<li>Install an OpenStreetMap app for <a href="http://wiki.openstreetmap.org/wiki/Android">Android</a> or <a href="http://wiki.openstreetmap.org/wiki/Apple_iOS">iOS</a> and preload the area.</li>
-					<li>Download the <a href="./inc/gpx/TODO.gpx">GPS data</a> if your device can import it.</li>
+					<li>Download the <a href={"./inc/gpx/" + active + ".gpx"}>GPS data</a> if your device can import it.</li>
 					<li>Print out this map and get a better one from a visitor information centre if possible.</li>
 					<li>Be sure to leave enough charge in your phone's battery for emergency calls.</li>
 					<li>Bring plenty of water, comfortable shoes, a hat and SPF 50 sunscreen.</li>
