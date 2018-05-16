@@ -24,20 +24,42 @@ class GuideDetails extends Component {
 			: active;
 		const smallImagePath = Config.localAssetsURL + "small/" + assetsKey + "/";
 		const mediumImagePath = Config.remoteAssetsURL + "medium/" + assetsKey + "/";
-		return Object.keys(landmarks).map(key => {
+		return Object.keys(landmarks).map(photoKey => {
 			var imgStyle = {
-				"backgroundImage": "url(" + smallImagePath + key + ".jpg)"
+				"backgroundImage": "url(" + smallImagePath + photoKey + ".jpg)"
 			};
-			var isOptional = /OPTIONAL: /.test(landmarks[key])
+			var isOptional = /OPTIONAL: /.test(landmarks[photoKey])
 				? "guide-optional"
 				: "guide-landmark";
-			return (<p key={key} className={isOptional}>
-				<a className="guide-thumbnail" style={imgStyle} href={mediumImagePath + key + ".jpg"} onClick={this.onPhotoPicked.bind(this, key + ".jpg")}>
-					<img alt="" src={smallImagePath + key + ".jpg"}/>
+			var guideText = Config.editMode
+				?	<span className="guide-text"><textarea name="guide-text-editor" onChange={this.saveEdits.bind(this, photoKey, assetsKey)} defaultValue={this.loadEdits(photoKey, assetsKey, landmarks[photoKey])}></textarea></span>
+				: <span className="guide-text">{landmarks[photoKey].replace(/OPTIONAL: /, '')}</span>;
+			return (<p key={photoKey} className={isOptional}>
+				<a className="guide-thumbnail" style={imgStyle} href={mediumImagePath + photoKey + ".jpg"} onClick={this.onPhotoPicked.bind(this, photoKey + ".jpg")}>
+					<img alt="" src={smallImagePath + photoKey + ".jpg"}/>
 				</a>
-				<span className="guide-text">{landmarks[key].replace(/OPTIONAL: /, '')}</span>
+				{guideText}
 			</p>);
 		});
+	}
+
+	loadEdits(photoKey, assetsKey, defaultValue) {
+		var storedValue = window.localStorage.getItem("edits") || "{}";
+		storedValue = JSON.parse(storedValue);
+		if (storedValue[assetsKey] && storedValue[assetsKey][photoKey]) {
+			return storedValue[assetsKey][photoKey];
+		}
+		return defaultValue;
+	}
+
+	saveEdits(photoKey, assetsKey, evt) {
+		var edits = window.localStorage.getItem("edits") || "{}";
+		edits = JSON.parse(edits);
+		if (!edits[assetsKey]) edits[assetsKey] = {};
+		edits[assetsKey][photoKey] = evt.target.value;
+		edits = JSON.stringify(edits);
+		window.localStorage.setItem("edits", edits);
+		console.log("storeEdits", edits);
 	}
 
 	addDetails(guide) {

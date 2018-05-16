@@ -47,6 +47,12 @@
 	padding: 0 0 0 2rem;
 }
 
+.guide-details .guide-text textarea {
+	border: solid 1px #ccc;
+	min-height: 8rem;
+	width: 100%;
+}
+
 .guide-details .guide-thumbnail {
 	flex: 0 1 auto;
 	display: inline-block;

@@ -45,6 +45,8 @@
 .guide-gallery ul li a img {
 	vertical-align: top;
 	visibility: hidden;
+	height: 96px;
+	width: auto;
 }
 
 @media (min-width:768px) {
