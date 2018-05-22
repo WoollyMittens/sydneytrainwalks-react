@@ -28,13 +28,14 @@ class GuideDetails extends Component {
 			var imgStyle = {
 				"backgroundImage": "url(" + smallImagePath + photoKey + ".jpg)"
 			};
-			var isOptional = /OPTIONAL: /.test(landmarks[photoKey])
-				? "guide-optional"
+			var isOptional = /OPTIONAL: |DETOUR: |ATTENTION: /;
+			var optionalColour = isOptional.test(landmarks[photoKey])
+				? "guide-" + landmarks[photoKey].split(":")[0].toLowerCase()
 				: "guide-landmark";
 			var guideText = Config.editMode
 				?	<span className="guide-text"><textarea name="guide-text-editor" onChange={this.saveEdits.bind(this, photoKey, assetsKey)} defaultValue={this.loadEdits(photoKey, assetsKey, landmarks[photoKey])}></textarea></span>
-				: <span className="guide-text">{landmarks[photoKey].replace(/OPTIONAL: /, '')}</span>;
-			return (<p key={photoKey} className={isOptional}>
+				: <span className="guide-text">{landmarks[photoKey].replace(isOptional, '')}</span>;
+			return (<p key={photoKey} className={optionalColour}>
 				<a className="guide-thumbnail" style={imgStyle} href={mediumImagePath + photoKey + ".jpg"} onClick={this.onPhotoPicked.bind(this, photoKey + ".jpg")}>
 					<img alt="" src={smallImagePath + photoKey + ".jpg"}/>
 				</a>

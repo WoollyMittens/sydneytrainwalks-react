@@ -25,21 +25,35 @@
 .guide-details p a img {}
 
 .guide-details .guide-landmark,
-.guide-details .guide-optional {
+.guide-details .guide-optional,
+.guide-details .guide-detour,
+.guide-details .guide-attention {
 	display: flex;
 	align-items: center;
 }
 
-.guide-details .guide-optional {
-	background-color: #dec;
-	padding: 2rem;
-}
-
 .guide-details .guide-landmark:after,
-.guide-details .guide-optional:after {
+.guide-details .guide-optional:after,
+.guide-details .guide-detour:after,
+.guide-details .guide-attention:after {
 	content: '';
 	display: table;
 	clear: both;
+}
+
+.guide-details .guide-optional {
+	background-color: #DCEDC8;
+	padding: 2rem;
+}
+
+.guide-details .guide-detour {
+	background-color: #FFCDD2;
+	padding: 2rem;
+}
+
+.guide-details .guide-attention {
+	background-color: #FFF9C4;
+	padding: 2rem;
 }
 
 .guide-details .guide-text {

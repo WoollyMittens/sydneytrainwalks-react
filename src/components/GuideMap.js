@@ -145,7 +145,7 @@ class GuideMap extends Component {
 			iconAnchor: [16, 32],
 			popupAnchor: [16, 0]
 		});
-		return photo
+		return (photo && photo.coords)
 			? <Marker position={photo.coords} icon={icon}></Marker>
 			: null;
 	}
