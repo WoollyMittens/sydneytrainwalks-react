@@ -41,19 +41,24 @@
 	clear: both;
 }
 
-.guide-details .guide-optional {
+.guide-details .guide-landmark {
+	margin-top: 2rem;
+}
+
+.guide-details .guide-optional,
+.guide-details .guide-detour,
+.guide-details .guide-attention {
 	background-color: #DCEDC8;
-	padding: 2rem;
+	padding: 1rem 2rem;
+	margin: 0 -2rem;
 }
 
 .guide-details .guide-detour {
 	background-color: #FFCDD2;
-	padding: 2rem;
 }
 
 .guide-details .guide-attention {
 	background-color: #FFF9C4;
-	padding: 2rem;
 }
 
 .guide-details .guide-text {
