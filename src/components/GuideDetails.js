@@ -24,7 +24,7 @@ class GuideDetails extends Component {
 			: active;
 		const smallImagePath = Config.localAssetsURL + "small/" + assetsKey + "/";
 		const mediumImagePath = Config.remoteAssetsURL + "medium/" + assetsKey + "/";
-		return Object.keys(landmarks).map(photoKey => {
+		return Object.keys(landmarks).sort().map(photoKey => {
 			var imgStyle = {
 				"backgroundImage": "url(" + smallImagePath + photoKey + ".jpg)"
 			};
