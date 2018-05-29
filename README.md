@@ -6,6 +6,19 @@ Thank you for supporting Sydney Train Walks. You make it possible for me to expa
 
 Please add your [suggestions and bug reports on GitHub](https://github.com/WoollyMittens/sydneytrainwalks-react/issues), or send them to [info@sydneytrainwalks.com](mailto:info@sydneytrainwalks.com).
 
+## Instructions
+
+This project uses node.js from http://nodejs.org/
+
+This project uses Cordova from https://cordova.apache.org/
+
+This project shares digital assets with https://github.com/WoollyMittens/sydneytrainwalks-web-app/
+
+The following commands are available for development:
++ `npm install` - Install the prerequisites.
++ `npm start` -  To preview the project in the default browser.
++ `npm run build` - To compile the scripts for release.
+
 ## Credits
 
 App, photography and GPS logs &copy; Maurice van Creij, [CC BY-SA](http://creativecommons.org/licenses/by-sa/2.0/).
