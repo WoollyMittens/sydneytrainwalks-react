@@ -27,8 +27,8 @@
             "cordova-plugin-headercolor": {}
         },
         "platforms": [
-            "android",
-            "ios"
+            "ios",
+            "android"
         ]
     }
 }

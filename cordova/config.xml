@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="200010" id="com.sydneytrainwalks.ios" version="2.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="200020" id="com.sydneytrainwalks.ios" version="2.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Train Walks</name>
     <description>
 		Easy nature walks around Sydney using the train, bus and ferry.
@@ -20,13 +20,32 @@
     <allow-navigation href="data:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <icon density="ldpi" src="assets/logos/icon-36.png" />
-        <icon density="mdpi" src="assets/logos/icon-48.png" />
-        <icon density="hdpi" src="assets/logos/icon-72.png" />
-        <icon density="xhdpi" src="assets/logos/icon-96.png" />
-        <icon density="xxhdpi" src="assets/logos/icon-144.png" />
-        <icon density="xxxhdpi" src="assets/logos/icon-192.png" />
+        <icon density="ldpi" src="res/mipmap-ldpi/ic_launcher.png" />
+        <icon density="mdpi" src="res/mipmap-mdpi/ic_launcher.png" />
+        <icon density="hdpi" src="res/mipmap-hdpi/ic_launcher.png" />
+        <icon density="xhdpi" src="res/mipmap-xhdpi/ic_launcher.png" />
+        <icon density="xxhdpi" src="res/mipmap-xxhdpi/ic_launcher.png" />
+        <icon density="xxxhdpi" src="res/mipmap-xxxhdpi/ic_launcher.png" />
         <preference name="HeaderColor" value="#ffffff" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" />
+        </edit-config>
+        <resource-file src="res/drawable/ic_launcher_background.xml" target="app/src/main/res/drawable/ic_launcher_background.xml" />
+        <resource-file src="res/drawable/ic_launcher_foreground.xml" target="app/src/main/res/drawable/ic_launcher_foreground.xml" />
+        <resource-file src="res/mipmap-anydpi-v26/ic_launcher.xml" target="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
+        <resource-file src="res/mipmap-anydpi-v26/ic_launcher_round.xml" target="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" />
+        <resource-file src="res/mipmap-ldpi/ic_launcher.png" target="app/src/main/res/mipmap-ldpi/ic_launcher.png" />
+        <resource-file src="res/mipmap-ldpi/ic_launcher_round.png" target="app/src/main/res/mipmap-ldpi/ic_launcher_round.png" />
+        <resource-file src="res/mipmap-hdpi/ic_launcher.png" target="app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+        <resource-file src="res/mipmap-hdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
+        <resource-file src="res/mipmap-mdpi/ic_launcher.png" target="app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+        <resource-file src="res/mipmap-mdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
+        <resource-file src="res/mipmap-xhdpi/ic_launcher.png" target="app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
+        <resource-file src="res/mipmap-xhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" />
+        <resource-file src="res/mipmap-xxhdpi/ic_launcher.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
+        <resource-file src="res/mipmap-xxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
+        <resource-file src="res/mipmap-xxxhdpi/ic_launcher.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
+        <resource-file src="res/mipmap-xxxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -54,6 +73,6 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-headercolor" spec="^1.0.0" />
-    <engine name="android" spec="^7.1.0" />
     <engine name="ios" spec="^4.5.4" />
+    <engine name="android" spec="^7.1.0" />
 </widget>
