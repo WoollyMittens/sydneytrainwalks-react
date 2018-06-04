@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "react";
-import {Map, TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
+import {Map, TileLayer, Marker, Popup, ScaleControl, GeoJSON} from "react-leaflet";
 import Config from "../config.json";
 import Leaflet from "leaflet";
 import LocationMarker from "../markers/marker-location.png";
@@ -190,6 +190,10 @@ class GuideMap extends Component {
 		return <GeoJSON key={key} data={route} style={routeStyles}/>;
 	}
 
+	addScale() {
+		return <ScaleControl imperial={false}/>;
+	}
+
 	onTileError(e) {
 		if (!/\/tiles\//i.test(e.tile.src)) {
 			e.tile.src = Config.localMapURL.replace("{x}", e.coords.x).replace("{y}", e.coords.y).replace("{z}", e.coords.z);
@@ -201,6 +205,7 @@ class GuideMap extends Component {
 		const bounds = this.calculateBounds(route, photo);
 		return (<Map bounds={bounds.limits} maxBounds={bounds.limits} minZoom={10} center={bounds.center} zoom={bounds.zoom} maxZoom={15}>
 			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/>
+			{this.addScale()}
 			{this.addRoute(route)}
 			{this.addMarkers(markers, bounds)}
 			{this.addLocation()}

@@ -41,7 +41,7 @@
 	margin: 0 auto 0.25rem;
 }
 
-@media (min-width:1024px) {
+@media (min-width:640px) {
 	.guide-menu-overview,
 	.guide-menu-map {
 		display: none;

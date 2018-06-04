@@ -39,7 +39,9 @@ class GuideFilters extends Component {
 				<option value="longest">Longest first</option>
 				<option value="start">Starting station</option>
 				<option value="end">Return station</option>
-				<option value="region">Region</option>
+				<option value="region">By region</option>
+				<option value="fireban">During bushfires</option>
+				<option value="rain">For rainy days</option>
 			</select>
 		</label>);
 	}

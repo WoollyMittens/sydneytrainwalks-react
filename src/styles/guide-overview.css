@@ -24,7 +24,7 @@
 	z-index: 1;
 }
 
-@media (min-width:1024px) {
+@media (min-width:640px) {
 	.guide-overview {
 		right: 50%;
 		transform: translate(-100%, 0%);

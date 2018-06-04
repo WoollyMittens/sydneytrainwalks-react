@@ -45,7 +45,7 @@
 	text-indent: 4rem;
 }
 
-@media (min-width:1024px) {
+@media (min-width:640px) {
 	.guide-map {
 		right: 50%;
 		transform: translate(-100%, 0%);

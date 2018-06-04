@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "react";
-import {Map, TileLayer, Marker} from "react-leaflet";
+import {Map, TileLayer, Marker, ScaleControl} from "react-leaflet";
 import Config from "../config.json";
 import Leaflet from "leaflet";
 import LocationMarker from "../markers/marker-location.png";
@@ -106,6 +106,10 @@ class GuideOverview extends Component {
 			: null;
 	}
 
+	addScale() {
+		return <ScaleControl imperial={false}/>;
+	}
+
 	onTileError(e) {
 		if (!/\/tiles\//i.test(e.tile.src)) {
 			e.tile.src = Config.localMapURL.replace("{x}", e.coords.x).replace("{y}", e.coords.y).replace("{z}", e.coords.z);
@@ -116,6 +120,7 @@ class GuideOverview extends Component {
 		const bounds = this.calculateBounds(routes);
 		return (<Map bounds={bounds.limits} maxBounds={bounds.limits} minZoom={8} maxZoom={15}>
 			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/>
+			{this.addScale()}
 			{this.addMarkers(routes)}
 			{this.addLocation()}
 		</Map>);

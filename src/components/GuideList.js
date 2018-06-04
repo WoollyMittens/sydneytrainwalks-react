@@ -19,8 +19,8 @@ class GuideList extends Component {
 	getLinks(guides) {
 		const {sorted, filtered} = this.props;
 		const matcher = new RegExp(filtered, 'i');
-		var sorter;
 
+		var sorter;
 		switch (sorted) {
 			case 'longest':
 				sorter = (a, b) => guides[b].length - guides[a].length;
@@ -41,10 +41,16 @@ class GuideList extends Component {
 				sorter = (a, b) => a - b;
 		}
 
+		var allowRain, allowFire;
 		return Object.keys(guides).sort(sorter).map(
-			(key) => matcher.test(guides[key].location + ' ' + guides[key].markers.start.location + ' ' + guides[key].markers.end.location)
-			? <li key={key}><button onClick={this.onPickGuide.bind(this, key)}><GuideLabel guide={guides[key]}/></button></li>
-			: null);
+			(key) => {
+				allowRain = (sorted === 'rain') ? guides[key].rain : true;
+				allowFire = (sorted === 'fireban') ? guides[key].fireban : true;
+				return (matcher.test(guides[key].location + ' ' + guides[key].markers.start.location + ' ' + guides[key].markers.end.location) && allowRain && allowFire)
+					? <li key={key}><button onClick={this.onPickGuide.bind(this, key)}><GuideLabel guide={guides[key]}/></button></li>
+					: null
+			}
+		);
 	}
 
 	render() {
