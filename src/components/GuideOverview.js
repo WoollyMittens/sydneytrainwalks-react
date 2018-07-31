@@ -83,9 +83,9 @@ class GuideOverview extends Component {
 			halfway;
 		const icon = new Leaflet.Icon({
 			iconUrl: WalkMarker,
-			iconSize: [32, 32],
-			iconAnchor: [16, 32],
-			popupAnchor: [0, -16]
+			iconSize: [28, 28],
+			iconAnchor: [14, 28],
+			popupAnchor: [0, -14]
 		});
 		return Object.keys(routes).map(key => {
 			route = this.flattenCoordinates(routes[key]);

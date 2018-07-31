@@ -129,9 +129,9 @@ class GuideMap extends Component {
 	addLocation() {
 		const icon = new Leaflet.Icon({
 			iconUrl: LocationMarker,
-			iconSize: [32, 32],
-			iconAnchor: [16, 32],
-			popupAnchor: [16, 0]
+			iconSize: [28, 28],
+			iconAnchor: [14, 28],
+			popupAnchor: [14, 0]
 		});
 		return this.state.mapLocation
 			? <Marker position={this.state.mapLocation} icon={icon}></Marker>
@@ -141,9 +141,9 @@ class GuideMap extends Component {
 	addPhoto(photo) {
 		const icon = new Leaflet.Icon({
 			iconUrl: PhotoMarker,
-			iconSize: [32, 32],
-			iconAnchor: [16, 32],
-			popupAnchor: [16, 0]
+			iconSize: [28, 28],
+			iconAnchor: [14, 28],
+			popupAnchor: [14, 0]
 		});
 		return (photo && photo.coords)
 			? <Marker position={photo.coords} icon={icon}></Marker>
@@ -163,7 +163,7 @@ class GuideMap extends Component {
 		markers.end.lon = markers.end.lon
 			? markers.end.lon
 			: bounds.last[0];
-		var icon, marker;
+		var icon, marker, popup;
 		return Object.keys(markers).map(key => {
 			marker = markers[key];
 			icon = new Leaflet.Icon({
@@ -172,10 +172,9 @@ class GuideMap extends Component {
 				iconAnchor: [16, 32],
 				popupAnchor: [0, -16]
 			});
+			popup = (marker.description) ? <Popup position={this.state.popupLocation}><span dangerouslySetInnerHTML={this.getMarkerDescription(marker.description)}></span></Popup> : null;
 			return (<Marker onClick={this.onMarkerOpen.bind(this, [marker.lat, marker.lon])} key={key} position={[marker.lat, marker.lon]} icon={icon}>
-				<Popup position={this.state.popupLocation}>
-					<span dangerouslySetInnerHTML={this.getMarkerDescription(marker.description)}></span>
-				</Popup>
+				{popup}
 			</Marker>);
 		});
 	}
