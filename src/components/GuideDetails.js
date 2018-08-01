@@ -83,7 +83,7 @@ class GuideDetails extends Component {
 				<h2>What to bring</h2>
 				<ul>
 					<li>Check the <a href="http://www.nationalparks.nsw.gov.au/alert/state-alerts">national parks website</a> for possible detours, closures and restrictions.</li>
-					<li>Install an OpenStreetMap app for <a href="http://wiki.openstreetmap.org/wiki/Android">Android</a> or <a href="http://wiki.openstreetmap.org/wiki/Apple_iOS">iOS</a> and preload the area.</li>
+					<li>Install an <a href="http://wiki.openstreetmap.org/">OpenStreetMap app</a> and preload the area.</li>
 					<li>Download the <a href={"./inc/gpx/" + active + ".gpx"}>GPS data</a> if your device can import it.</li>
 					<li>Print out this map and get a better one from a visitor information centre if possible.</li>
 					<li>Be sure to leave enough charge in your phone's battery for emergency calls.</li>
