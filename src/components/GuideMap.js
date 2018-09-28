@@ -195,6 +195,7 @@ class GuideMap extends Component {
 
 	onTileError(e) {
 		if (!/\/tiles\//i.test(e.tile.src)) {
+			/* e.tile.onerror = function(e) { console.log('secondary tile failure', e); } */
 			e.tile.src = Config.localMapURL.replace("{x}", e.coords.x).replace("{y}", e.coords.y).replace("{z}", e.coords.z);
 		}
 	}

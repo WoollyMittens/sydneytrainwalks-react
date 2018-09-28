@@ -1,6 +1,6 @@
 ## Sydney Train Walks
 
-Version 2.0.1
+Version 2.0.5
 
 Thank you for supporting Sydney Train Walks. You make it possible for me to expand this guide and motivate people to enjoy Sydney's varied landscapes.
 
