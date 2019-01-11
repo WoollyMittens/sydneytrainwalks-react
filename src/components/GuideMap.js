@@ -5,6 +5,7 @@ import Config from "../config.json";
 import Leaflet from "leaflet";
 import LocationMarker from "../markers/marker-location.png";
 import TrainMarker from "../markers/marker-train.png";
+import TramMarker from "../markers/marker-tram.png";
 import FerryMarker from "../markers/marker-ferry.png";
 import BusMarker from "../markers/marker-bus.png";
 import InfoMarker from "../markers/marker-info.png";
@@ -46,6 +47,7 @@ class GuideMap extends Component {
 		switch(type) {
 			case "location": marker = LocationMarker; break;
 			case "train": marker = TrainMarker; break;
+			case "tram": marker = TramMarker; break;
 			case "ferry": marker = FerryMarker; break;
 			case "bus": marker = BusMarker; break;
 			case "warning": marker = WarningMarker; break;
