@@ -10,8 +10,8 @@
     "author": "Apache Cordova Team",
     "license": "Apache-2.0",
     "dependencies": {
-        "cordova-android": "^7.1.0",
-        "cordova-ios": "^4.5.4",
+        "cordova-android": "^7.1.4",
+        "cordova-ios": "^4.5.5",
         "cordova-plugin-console": "^1.1.0",
         "cordova-plugin-geolocation": "^4.0.1",
         "cordova-plugin-headercolor": "^1.0.0",
@@ -27,8 +27,8 @@
             "cordova-plugin-headercolor": {}
         },
         "platforms": [
-            "ios",
-            "android"
+            "android",
+            "ios"
         ]
     }
 }
