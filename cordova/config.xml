@@ -76,12 +76,22 @@
         <splash height="480" platform="ios" src="res/ios/Default~iphone.png" width="320" />
         <splash height="2436" platform="ios" src="res/ios/splash-1125x2436.png" width="1125" />
         <splash height="1125" platform="ios" src="res/ios/splash-2436x1125.png" width="2436" />
+        <custom-config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
+            <string>Sydney Train Walks can show your location on the map.</string>
+        </custom-config-file>
+        <custom-config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
+            <string>Sydney Train Walks can show your location on the map.</string>
+        </custom-config-file>
+        <custom-config-file parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
+            <string>Sydney Train Walks can show your location on the map.</string>
+        </custom-config-file>
     </platform>
     <plugin name="cordova-plugin-console" spec="^1.1.0" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-headercolor" spec="^1.0.0" />
+    <plugin name="cordova-custom-config" spec="^5.0.3" />
     <engine name="android" spec="^7.1.4" />
     <engine name="ios" spec="^4.5.5" />
 </widget>
