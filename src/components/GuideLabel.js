@@ -4,6 +4,7 @@ import '../styles/guide-label.css';
 import trainIcon from "../icons/sign_train_3.svg";
 import busIcon from "../icons/sign_bus.svg";
 import ferryIcon from "../icons/sign_water_transport.svg";
+import tramIcon from "../icons/sign_tramway.svg";
 
 class GuideLabel extends Component {
 
@@ -15,6 +16,8 @@ class GuideLabel extends Component {
 				return busIcon;
 			case "ferry":
 				return ferryIcon;
+			case "tram":
+				return tramIcon;
 			default:
 				return null;
 		}
