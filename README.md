@@ -1,6 +1,6 @@
 ## Sydney Train Walks
 
-Version 2.0.6
+Version 2.0.9
 
 Thank you for supporting Sydney Train Walks. You make it possible for me to expand this guide and motivate people to enjoy Sydney's varied landscapes.
 
@@ -18,6 +18,9 @@ The following commands are available for development:
 + `npm install` - Install the prerequisites.
 + `npm start` -  To preview the project in the default browser.
 + `npm run build` - To compile the scripts for release.
++ `cd cordova` - To make the cordova folder the working directory.
++ `cordova run android` - To run the app on a connected Android device.
++ `cordova run ios` - To run the app on a connected iOS device.
 
 ## Credits
 
