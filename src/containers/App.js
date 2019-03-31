@@ -126,7 +126,7 @@ class App extends Component {
 			components.push(<GuideHeader key="app-header" guide={guide} resetGuide={actions.resetGuide}/>);
 			components.push(<GuideMap key="app-map" route={route} markers={markers} photo={photo} previousView={actions.previousView}/>);
 			components.push(<GuideZoom key="app-zoom" photo={photo} resetPhoto={actions.resetPhoto} switchView={actions.switchView}/>);
-			components.push(<GuideDetails key="app-details" guide={guide} active={active} pickPhoto={actions.pickPhoto}/>);
+			components.push(<GuideDetails key="app-details" guide={guide} active={active} pickPhoto={actions.pickPhoto} showLocation={actions.showLocation}/>);
 			components.push(<GuideGallery key="app-gallery" gallery={gallery} pickPhoto={actions.pickPhoto}/>);
 		} else {
 			components.push(<GuideFilters key="app-filters" filtered={filtered} sorted={sorted} sortGuides={actions.sortGuides} filterGuides={actions.filterGuides}/>);

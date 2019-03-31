@@ -4,6 +4,7 @@ import {
 	RESET_GUIDE,
 	PICK_PHOTO,
 	RESET_PHOTO,
+	SHOW_LOCATION,
 	SORT_GUIDES,
 	FILTER_GUIDES,
 	SWITCH_VIEW,
@@ -54,6 +55,12 @@ function appReducer(state = defaultState, action) {
 		case RESET_PHOTO:
 			return Object.assign({}, state, {
 				highlight: null
+			});
+		case SHOW_LOCATION:
+			return Object.assign({}, state, {
+				view: "map",
+				previous: "details",
+				highlight: action.key
 			});
 		case SORT_GUIDES:
 			return Object.assign({}, state, {

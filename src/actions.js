@@ -3,6 +3,7 @@ export const PICK_GUIDE = "PICK_GUIDE";
 export const RESET_GUIDE = "RESET_GUIDE";
 export const PICK_PHOTO = "PICK_PHOTO";
 export const RESET_PHOTO = "RESET_PHOTO";
+export const SHOW_LOCATION = "SHOW_LOCATION";
 export const SORT_GUIDES = "SORT_GUIDES";
 export const FILTER_GUIDES = "FILTER_GUIDES";
 export const SWITCH_VIEW = "SWITCH_VIEW";
@@ -29,6 +30,10 @@ export function pickPhoto(key) {
 
 export function resetPhoto() {
 	return {type: RESET_PHOTO};
+}
+
+export function showLocation(key) {
+	return {type: SHOW_LOCATION, key};
 }
 
 export function sortGuides(property) {
