@@ -75,7 +75,7 @@ class GuideDetails extends Component {
 		return (<article className="guide-details">
 			<div dangerouslySetInnerHTML={this.getDescription(guide.description)}></div>
 			<div className="guide-instructions">
-				<p>{"It takes about " + guide.duration + " hours to complete the full " + guide.length + " kilometre walk, with plenty of breaks and photography stops. A brisk walker can do this much faster, but consider that there's a lot to see along the way."}</p>
+				<p>{"It takes about " + guide.duration + " hours to complete the full " + guide.length + " kilometre walk, but plan extra for plenty of breaks and photography stops. Consider that there's a lot to see along the way."}</p>
 				<h2>Getting there and back</h2>
 				<p>
 					{"Get the " + guide.markers.start.type + " to " + guide.markers.start.location + " using "}
