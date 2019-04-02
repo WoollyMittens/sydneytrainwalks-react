@@ -23,6 +23,12 @@ class GuideDetails extends Component {
 		};
 	}
 
+	getLandmark(landmark, isOptional) {
+		return {
+			__html: landmark.replace(isOptional, '')
+		};
+	}
+
 	getLandmarks(landmarks, assets) {
 		const {active} = this.props;
 		const assetsKey = assets
@@ -41,7 +47,7 @@ class GuideDetails extends Component {
 				: "guide-landmark";
 			var guideText = Config.editMode
 				?	<span className="guide-text"><textarea name="guide-text-editor" onChange={this.saveEdits.bind(this, photoKey, assetsKey)} defaultValue={this.loadEdits(photoKey, assetsKey, landmarks[photoKey])}></textarea></span>
-				: <span className="guide-text">{landmarks[photoKey].replace(isOptional, '')} <button className="guide-locate" onClick={this.onLocationRequested.bind(this, photoKey + ".jpg")}>Show location</button></span>;
+				: <span className="guide-text"><span dangerouslySetInnerHTML={this.getLandmark(landmarks[photoKey], isOptional)}/> <button className="guide-locate" onClick={this.onLocationRequested.bind(this, photoKey + ".jpg")}>Show location</button></span>;
 			return (<p key={photoKey} className={optionalColour}>
 				<a className="guide-thumbnail" style={imgStyle} href={mediumImagePath + photoKey + ".jpg"} onClick={this.onPhotoPicked.bind(this, photoKey + ".jpg")}>
 					<img alt="" src={smallImagePath + photoKey + ".jpg"}/>

@@ -61,6 +61,22 @@
 	background-color: #FFF9C4;
 }
 
+.guide-details .guide-attention i,
+.guide-details .guide-detour i,
+.guide-details .guide-optional i {
+	float: right;
+	display: inline-block;
+	background-color: #1B5E20;
+	border-radius: 3px;
+	color: #F0F4C3;
+	font-style: normal;
+	font-size: 0.875em;
+	padding: 0.2rem 0.3rem;
+	margin: -0.1rem 0 -0.1rem 0.3em;
+	vertical-align: middle;
+	line-height: 1;
+}
+
 .guide-details .guide-text {
 	flex: 0 1 auto;
 	padding: 0 0 0 2rem;
