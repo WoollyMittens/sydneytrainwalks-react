@@ -4,8 +4,17 @@ import '../styles/guide-filters.css';
 
 class GuideFilters extends Component {
 
+	onHideKeyboard(evt) {
+		evt.preventDefault();
+		evt.target.blur();
+	}
+
 	onFilter(evt) {
 		const {filterGuides} = this.props;
+		if (evt.key == 'Enter') {
+			evt.preventDefault();
+			evt.target.blur();
+		}
 		filterGuides(evt.target.value);
 	}
 
@@ -47,7 +56,7 @@ class GuideFilters extends Component {
 	}
 
 	render() {
-		return (<form className="guide-filters">
+		return (<form className="guide-filters" onSubmit={this.onHideKeyboard.bind(this)}>
 			{this.addFilter()}
 			{this.addSorter()}
 		</form>);
