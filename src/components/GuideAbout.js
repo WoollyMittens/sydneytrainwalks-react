@@ -9,7 +9,7 @@ class GuideAbout extends Component {
 			<h2>About This App</h2>
 			<p>
 				<strong>Sydney Train Walks</strong>
-				<br/>Version 2.1.1
+				<br/>Version 2.2.0
 			</p>
 			<p>Thank you for supporting Sydney Train Walks. You make it possible for me to expand this guide and motivate people to enjoy Sydney's varied landscapes.</p>
 			<p>Please add your <a href="https://github.com/WoollyMittens/sydneytrainwalks-react/issues">suggestions and bug reports on GitHub</a>, or send them to <a href="mailto:info@sydneytrainwalks.com">info@sydneytrainwalks.com</a>.</p>

@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "react";
-import {Map, TileLayer, Marker, ScaleControl} from "react-leaflet";
+import {Map, TileLayer, Marker, ScaleControl, GeoJSON} from "react-leaflet";
 import Config from "../config.json";
 import Leaflet from "leaflet";
 import LocationMarker from "../markers/marker-location.png";
@@ -94,6 +94,18 @@ class GuideOverview extends Component {
 		});
 	}
 
+	addRoutes(routes, guides) {
+		var route;
+		const routeStyles = {
+			'color': '#ff6600',
+			'weight': 5,
+			'opacity': 0.66
+		};
+		return Object.keys(guides).map(key => {
+			return (!guides[key].assets) ? (<GeoJSON key={key} data={routes[key]} style={routeStyles}/>) : null;
+		});
+	}
+
 	addLocation() {
 		const icon = new Leaflet.Icon({
 			iconUrl: LocationMarker,
@@ -116,20 +128,21 @@ class GuideOverview extends Component {
 		}
 	}
 
-	addMap(routes) {
+	addMap(routes, guides) {
 		const bounds = this.calculateBounds(routes);
 		return (<Map bounds={bounds.limits} maxBounds={bounds.limits} minZoom={8} maxZoom={15}>
 			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/>
 			{this.addScale()}
 			{this.addMarkers(routes)}
+			{this.addRoutes(routes, guides)}
 			{this.addLocation()}
 		</Map>);
 	}
 
 	render() {
-		const {routes} = this.props;
+		const {routes, guides} = this.props;
 		return routes
-			? (<figure className="guide-overview">{this.addMap(routes)}</figure>)
+			? (<figure className="guide-overview">{this.addMap(routes, guides)}</figure>)
 			: null;
 	}
 

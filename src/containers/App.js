@@ -133,7 +133,7 @@ class App extends Component {
 			components.push(<GuideList key="app-list" filtered={filtered} sorted={sorted} guides={guides} pickGuide={actions.pickGuide} saveState={actions.saveState}/>);
 			components.push(<GuideAbout key="app-about"/>);
 		}
-		components.push(<GuideOverview key="app-overview" routes={routes} pickGuide={actions.pickGuide} saveState={actions.saveState}/>);
+		components.push(<GuideOverview key="app-overview" routes={routes} guides={guides} pickGuide={actions.pickGuide} saveState={actions.saveState}/>);
 		components.push(<GuideMenu key="app-menu" active={active} view={view} resetPhoto={actions.resetPhoto} resetGuide={actions.resetGuide} switchView={actions.switchView} originView={actions.originView} saveState={actions.saveState}/>);
 		return (components);
 	}
