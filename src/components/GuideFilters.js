@@ -11,7 +11,7 @@ class GuideFilters extends Component {
 
 	onFilter(evt) {
 		const {filterGuides} = this.props;
-		if (evt.key == 'Enter') {
+		if (evt.key === 'Enter') {
 			evt.preventDefault();
 			evt.target.blur();
 		}

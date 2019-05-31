@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="200200" id="com.sydneytrainwalks.ios" ios-CFBundleVersion="200200" version="2.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="200300" id="com.sydneytrainwalks.ios" ios-CFBundleVersion="200300" version="2.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Train Walks</name>
     <description>
 		Easy nature walks around Sydney using the train, bus and ferry.

@@ -25,17 +25,18 @@ class GuideLabel extends Component {
 
 	render() {
 		const {guide} = this.props;
+		const last = guide.markers.length - 1;
 		return (
 			<div className="guide-label">
-				<span className={"guide-label-station guide-label-" + guide.markers.start.type}>
-					<img alt={guide.markers.start.type} src={this.getIcon(guide.markers.start.type)}/> {guide.markers.start.location}
+				<span className={"guide-label-station guide-label-" + guide.markers[0].type}>
+					<img alt={guide.markers[0].type} src={this.getIcon(guide.markers[0].type)}/> {guide.markers[0].location}
 				</span>
 				<span className="guide-label-park">
 					{guide.location}
 					<em>{guide.length}km / {guide.duration}hr</em>
 				</span>
-				<span className={"guide-label-station guide-label-" + guide.markers.end.type}>
-					<img alt={guide.markers.end.type} src={this.getIcon(guide.markers.end.type)}/> {guide.markers.end.location}
+				<span className={"guide-label-station guide-label-" + guide.markers[last].type}>
+					<img alt={guide.markers[last].type} src={this.getIcon(guide.markers[last].type)}/> {guide.markers[last].location}
 				</span>
 			</div>);
 	}

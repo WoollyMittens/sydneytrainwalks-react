@@ -95,7 +95,6 @@ class GuideOverview extends Component {
 	}
 
 	addRoutes(routes, guides) {
-		var route;
 		const routeStyles = {
 			'color': '#ff6600',
 			'weight': 5,

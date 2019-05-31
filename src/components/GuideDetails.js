@@ -23,34 +23,33 @@ class GuideDetails extends Component {
 		};
 	}
 
-	getLandmark(landmark, isOptional) {
+	getLandmark(landmark) {
 		return {
-			__html: landmark.replace(isOptional, '')
+			__html: landmark.description
 		};
 	}
 
 	getLandmarks(landmarks, assets) {
 		const {active} = this.props;
-		const assetsKey = assets
-			? assets.prefix
-			: active;
+		const assetsKey = assets ? assets.prefix : active;
 		const smallImagePath = Config.localAssetsURL + "small/" + assetsKey + "/";
 		const mediumImagePath = Config.remoteAssetsURL + "medium/" + assetsKey + "/";
-		//return Object.keys(landmarks).sort().map(photoKey => {
-		return Object.keys(landmarks).map(photoKey => {
+		return landmarks.map(landmark => {
+			if (!landmark.photo) return false;
+			var photoKey = landmark.photo;
 			var imgStyle = {
 				"backgroundImage": "url(" + smallImagePath + photoKey + ".jpg)"
 			};
-			var isOptional = /OPTIONAL: |DETOUR: |ATTENTION: /;
-			var optionalColour = isOptional.test(landmarks[photoKey])
-				? "guide-" + landmarks[photoKey].split(":")[0].toLowerCase()
-				: "guide-landmark";
+			var markerClass = "guide-landmark";
+			if (landmark.optional) markerClass = "guide-optional";
+			if (landmark.detour) markerClass = "guide-detour";
+			if (landmark.attention) markerClass = "guide-attention";
 			var guideText = Config.editMode
-				?	<span className="guide-text"><textarea name="guide-text-editor" onChange={this.saveEdits.bind(this, photoKey, assetsKey)} defaultValue={this.loadEdits(photoKey, assetsKey, landmarks[photoKey])}></textarea></span>
-				: <span className="guide-text"><span dangerouslySetInnerHTML={this.getLandmark(landmarks[photoKey], isOptional)}/> <button className="guide-locate" onClick={this.onLocationRequested.bind(this, photoKey + ".jpg")}>Show location</button></span>;
-			return (<p key={photoKey} className={optionalColour}>
-				<a className="guide-thumbnail" style={imgStyle} href={mediumImagePath + photoKey + ".jpg"} onClick={this.onPhotoPicked.bind(this, photoKey + ".jpg")}>
-					<img alt="" src={smallImagePath + photoKey + ".jpg"}/>
+				?	<span className="guide-text"><textarea name="guide-text-editor" onChange={this.saveEdits.bind(this, photoKey, assetsKey)} defaultValue={this.loadEdits(photoKey, assetsKey, landmark)}></textarea></span>
+				: <span className="guide-text"><span dangerouslySetInnerHTML={this.getLandmark(landmark)}/> <button className="guide-locate" onClick={this.onLocationRequested.bind(this, photoKey)}>Show location</button></span>;
+			return (<p key={photoKey} className={markerClass}>
+				<a className="guide-thumbnail" style={imgStyle} href={mediumImagePath + photoKey} onClick={this.onPhotoPicked.bind(this, photoKey)}>
+					<img alt="" src={smallImagePath + photoKey}/>
 				</a>
 				{guideText}
 			</p>);
@@ -78,20 +77,21 @@ class GuideDetails extends Component {
 
 	addDetails(guide) {
 		const {active} = this.props;
+		const last = guide.markers.length - 1;
 		return (<article className="guide-details">
 			<div dangerouslySetInnerHTML={this.getDescription(guide.description)}></div>
 			<div className="guide-instructions">
 				<p>{"It takes about " + guide.duration + " hours to complete the full " + guide.length + " kilometre walk, but plan extra for plenty of breaks and photography stops. Consider that there's a lot to see along the way."}</p>
 				<h2>Getting there and back</h2>
 				<p>
-					{"Get the " + guide.markers.start.type + " to " + guide.markers.start.location + " using "}
-					<a href={"https://transportnsw.info/trip#/?to=" + guide.markers.start.location}>transportnsw.info</a>.{" "}
-					{"Plan your return trip from " + guide.markers.end.location + " at "}
-					<a href={"https://transportnsw.info/trip#/?to=" + guide.markers.end.location}>transportnsw.info</a>.
+					{"Get the " + guide.markers[0].type + " to " + guide.markers[0].location + " using "}
+					<a href={"https://transportnsw.info/trip#/?to=" + guide.markers[0].location}>transportnsw.info</a>.{" "}
+					{"Plan your return trip from " + guide.markers[last].location + " at "}
+					<a href={"https://transportnsw.info/trip#/?to=" + guide.markers[last].location}>transportnsw.info</a>.
 				</p>
 				<h2>Along the way</h2>
 			</div>
-			{this.getLandmarks(guide.landmarks, guide.assets)}
+			{this.getLandmarks(guide.markers, guide.assets)}
 			<div className="guide-instructions">
 				<h2>What to bring</h2>
 				<ul>

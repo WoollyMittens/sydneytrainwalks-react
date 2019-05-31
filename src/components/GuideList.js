@@ -29,10 +29,10 @@ class GuideList extends Component {
 				sorter = (a, b) => guides[a].length - guides[b].length;
 				break;
 			case 'start':
-				sorter = (a, b) => guides[a].markers.start.location > guides[b].markers.start.location ? 1 : -1;
+				sorter = (a, b) => guides[a].markers[0].location > guides[b].markers[0].location ? 1 : -1;
 				break;
 			case 'end':
-				sorter = (a, b) => guides[a].markers.end.location > guides[b].markers.end.location ? 1 : -1;
+				sorter = (a, b) => guides[a].markers[guides[a].markers.length - 1].location > guides[b].markers[guides[b].markers.length - 1].location ? 1 : -1;
 				break;
 			case 'region':
 				sorter = (a, b) => guides[a].location > guides[b].location ? 1 : -1;
@@ -41,12 +41,13 @@ class GuideList extends Component {
 				sorter = (a, b) => a - b;
 		}
 
-		var allowRain, allowFire;
+		var markers, allowRain, allowFire;
 		return Object.keys(guides).sort(sorter).map(
 			(key) => {
+				markers = guides[key].markers;
 				allowRain = (sorted === 'rain') ? guides[key].rain : true;
 				allowFire = (sorted === 'fireban') ? guides[key].fireban : true;
-				return (matcher.test(guides[key].location + ' ' + guides[key].markers.start.location + ' ' + guides[key].markers.end.location) && allowRain && allowFire)
+				return (matcher.test(guides[key].location + ' ' + guides[key].markers[0].location + ' ' + guides[key].markers[markers.length - 1].location) && allowRain && allowFire)
 					? <li key={key}><button onClick={this.onPickGuide.bind(this, key)}><GuideLabel guide={guides[key]}/></button></li>
 					: null
 			}

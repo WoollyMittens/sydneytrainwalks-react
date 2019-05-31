@@ -152,22 +152,10 @@ class GuideMap extends Component {
 			: null;
 	}
 
-	addMarkers(markers, bounds) {
-		markers.start.lat = markers.start.lat
-			? markers.start.lat
-			: bounds.first[1];
-		markers.start.lon = markers.start.lon
-			? markers.start.lon
-			: bounds.first[0];
-		markers.end.lat = markers.end.lat
-			? markers.end.lat
-			: bounds.last[1];
-		markers.end.lon = markers.end.lon
-			? markers.end.lon
-			: bounds.last[0];
-		var icon, marker, popup;
-		return Object.keys(markers).map(key => {
-			marker = markers[key];
+	addMarkers(markers) {
+		var icon, popup;
+		return markers.map((marker, index) => {
+			if (marker.photo) return null;
 			icon = new Leaflet.Icon({
 				iconUrl: this.pickMarker(marker.type),
 				iconSize: [32, 32],
@@ -175,9 +163,7 @@ class GuideMap extends Component {
 				popupAnchor: [0, -16]
 			});
 			popup = (marker.description) ? <Popup position={this.state.popupLocation}><span dangerouslySetInnerHTML={this.getMarkerDescription(marker.description)}></span></Popup> : null;
-			return (<Marker onClick={this.onMarkerOpen.bind(this, [marker.lat, marker.lon])} key={key} position={[marker.lat, marker.lon]} icon={icon}>
-				{popup}
-			</Marker>);
+			return (<Marker onClick={this.onMarkerOpen.bind(this, [marker.lat, marker.lon])} key={"marker" + index} position={[marker.lat, marker.lon]} icon={icon}>{popup}</Marker>);
 		});
 	}
 
@@ -209,7 +195,7 @@ class GuideMap extends Component {
 			<TileLayer attribution={Config.mapAttribution} url={Config.remoteMapURL} ontileerror={this.onTileError.bind(this)}/>
 			{this.addScale()}
 			{this.addRoute(route)}
-			{this.addMarkers(markers, bounds)}
+			{this.addMarkers(markers)}
 			{this.addLocation()}
 			{this.addPhoto(photo)}
 		</Map>);
