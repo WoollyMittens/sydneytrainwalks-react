@@ -13,7 +13,7 @@
     "redux": "^3.7.2",
     "togeojson": "^0.16.0",
     "update": "^0.7.4",
-    "xmldom": "^0.1.27"
+    "xmldom": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
